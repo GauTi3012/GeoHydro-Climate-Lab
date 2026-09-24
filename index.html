@@ -21,6 +21,41 @@ a{text-decoration:none;color:inherit}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
 .logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--navy),var(--teal));color:white;font-size:12px;letter-spacing:.5px;border:3px solid #d9eceb}
 .brand small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px}
+  .ghc-logo{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.cusb-logo{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    margin-left:14px;
+    padding-left:14px;
+    border-left:1px solid var(--line);
+    flex-shrink:0;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.15;
+}
+
+.brand-text strong{
+    font-size:18px;
+    color:var(--navy);
+}
+
+.brand-text small{
+    display:block;
+    margin-top:5px;
+    font-size:10px;
+    color:var(--muted);
+    font-weight:600;
+}
 .navlinks{display:flex;gap:25px;font-size:14px;font-weight:650}
 .navlinks a:hover{color:var(--teal)}
 .menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
@@ -98,17 +133,46 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 @media(max-width:560px){
  h1{font-size:43px}.hero p{font-size:16px}.research-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}
  .brand{font-size:13px}.brand small{font-size:9px}
+  .ghc-logo{
+    width:42px;
+    height:42px;
+}
+
+.cusb-logo{
+    width:44px;
+    height:44px;
+    margin-left:6px;
+    padding-left:6px;
+}
+
+.brand-text strong{
+    font-size:14px;
+}
+
+.brand-text small{
+    font-size:8px;
+}
 }
 </style>
 </head>
 <body>
 
-<header class="navbar">
- <div class="container nav-inner">
-  <a class="brand" href="#home">
-   <div class="logo">GHC</div>
-   <div>GeoHydro-Climate Lab<small>Department of Geology · CUSB Gaya</small></div>
-  </a>
+<a class="brand" href="#home">
+
+    <img src="images/ghc-logo.png"
+         class="ghc-logo"
+         alt="GeoHydro-Climate Lab Logo">
+
+    <div class="brand-text">
+        <strong>GeoHydro-Climate Lab</strong>
+        <small>Department of Geology · Central University of South Bihar, Gaya</small>
+    </div>
+
+    <img src="images/cusb-logo.png"
+         class="cusb-logo"
+         alt="Central University of South Bihar Logo">
+
+</a>
   <nav class="navlinks">
    <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a>
    <a href="#people">People</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
