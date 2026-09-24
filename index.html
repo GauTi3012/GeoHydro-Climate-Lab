@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GeoHydro-Climate Lab (GHC), Department of Geology, Central University of South Bihar, Gaya.">
+<title>GeoHydro-Climate Lab | CUSB Gaya</title>
+<style>
+:root{
+  --navy:#12304a; --blue:#176b87; --teal:#278b83; --earth:#b87333;
+  --ink:#19303d; --muted:#647784; --light:#f4f8fa; --white:#fff;
+  --line:#dbe6eb; --shadow:0 12px 35px rgba(18,48,74,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
+a{text-decoration:none;color:inherit}
+.container{width:min(1160px,92%);margin:auto}
+.navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
+.logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--navy),var(--teal));color:white;font-size:12px;letter-spacing:.5px;border:3px solid #d9eceb}
+.brand small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px}
+.navlinks{display:flex;gap:25px;font-size:14px;font-weight:650}
+.navlinks a:hover{color:var(--teal)}
+.menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#0f2e46 0%,#165b72 55%,#23877e 100%);color:white}
+.hero:before{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 80% 25%,rgba(255,255,255,.14),transparent 25%),
+linear-gradient(145deg,transparent 48%,rgba(255,255,255,.06) 49%,transparent 50%),
+linear-gradient(35deg,transparent 48%,rgba(255,255,255,.05) 49%,transparent 50%);opacity:.8}
+.hero-grid{position:relative;min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#bfe8df;margin-bottom:18px}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2px;margin-bottom:22px}
+.hero p{font-size:19px;max-width:680px;color:#e1f0f2}
+.hero-buttons{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 21px;border-radius:8px;font-weight:750;display:inline-block;border:1px solid transparent}
+.btn-primary{background:white;color:var(--navy)}
+.btn-outline{border-color:rgba(255,255,255,.45);color:white}
+.btn:hover{transform:translateY(-2px)}
+.hero-visual{height:390px;border:1px solid rgba(255,255,255,.18);border-radius:28px;background:
+radial-gradient(circle at 50% 45%,rgba(255,255,255,.18),transparent 28%),
+linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.02));position:relative;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.15)}
+.orbit{position:absolute;border:1px solid rgba(255,255,255,.24);border-radius:50%;inset:40px;transform:rotate(-18deg)}
+.orbit.o2{inset:80px;transform:rotate(35deg)}
+.earth{position:absolute;width:185px;height:185px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:
+radial-gradient(circle at 35% 30%,#70b9a0,#1c7380 48%,#123c59 78%);box-shadow:0 0 50px rgba(92,222,201,.22)}
+.earth:after{content:"";position:absolute;inset:18px;border-radius:50%;background:linear-gradient(35deg,transparent 35%,rgba(188,211,143,.35) 36% 48%,transparent 49% 62%,rgba(201,219,151,.3) 63% 72%,transparent 73%)}
+.satellite{position:absolute;right:35px;top:50px;font-size:42px;transform:rotate(-12deg)}
+.section{padding:95px 0}
+.section.alt{background:var(--light)}
+.section-head{max-width:700px;margin-bottom:45px}
+.kicker{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:1.6px;font-size:12px}
+h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 0 13px}
+.section-head p{color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:start}
+.about-card{background:white;border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
+.about-card h3{color:var(--navy);margin-bottom:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.stat{padding:20px;background:var(--light);border-radius:12px;text-align:center}
+.stat strong{display:block;font-size:25px;color:var(--teal)}
+.stat span{font-size:12px;color:var(--muted)}
+.research-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{border:1px solid var(--line);border-radius:17px;padding:25px;background:white;transition:.25s;box-shadow:0 6px 20px rgba(18,48,74,.04)}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.icon{width:46px;height:46px;border-radius:12px;background:#e6f3f1;display:grid;place-items:center;font-size:22px;margin-bottom:17px}
+.card h3{font-size:17px;color:var(--navy);margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted)}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project{min-height:250px;border-radius:18px;padding:27px;color:white;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;position:relative;background:linear-gradient(145deg,#153b54,#247d79)}
+.project:nth-child(2){background:linear-gradient(145deg,#28465a,#a36b3d)}
+.project:nth-child(3){background:linear-gradient(145deg,#15576b,#327d65)}
+.project:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(25deg,transparent 0 24px,rgba(255,255,255,.06) 25px 26px);opacity:.7}
+.project>*{position:relative}
+.project span{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#cdebe5;font-weight:800}
+.project h3{font-size:22px;line-height:1.2;margin:7px 0}
+.project p{font-size:13px;color:#e2f0f0}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.person{border:1px solid var(--line);border-radius:18px;padding:28px;background:white;text-align:center}
+.avatar{width:85px;height:85px;margin:0 auto 15px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#d9eeea,#dce7ef);color:var(--navy);font-weight:800;font-size:24px}
+.person h3{color:var(--navy);font-size:18px}.person p{font-size:13px;color:var(--muted)}
+.timeline{border-left:2px solid #cfe1e4;margin-left:10px;padding-left:28px;display:grid;gap:25px}
+.event{position:relative}.event:before{content:"";position:absolute;width:11px;height:11px;background:var(--teal);border-radius:50%;left:-35px;top:7px;border:3px solid white;box-shadow:0 0 0 1px var(--teal)}
+.event strong{color:var(--navy)}.event p{font-size:14px;color:var(--muted);margin-top:3px}
+.contact{background:var(--navy);color:white}
+.contact h2{color:white}.contact p{color:#cbdde3}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-box{padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:rgba(255,255,255,.05)}
+.contact-item{margin:13px 0}.contact-item strong{display:block;color:#bfe8df;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+@media(max-width:900px){
+ .navlinks{display:none}.menu{display:block}.nav-inner{height:68px}
+ .hero-grid{grid-template-columns:1fr;min-height:auto;padding:85px 0}.hero-visual{height:310px}
+ .research-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}.people{grid-template-columns:1fr}
+ .about-grid,.contact-grid{grid-template-columns:1fr}.section{padding:70px 0}
+}
+@media(max-width:560px){
+ h1{font-size:43px}.hero p{font-size:16px}.research-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}
+ .brand{font-size:13px}.brand small{font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+ <div class="container nav-inner">
+  <a class="brand" href="#home">
+   <div class="logo">GHC</div>
+   <div>GeoHydro-Climate Lab<small>Department of Geology · CUSB Gaya</small></div>
+  </a>
+  <nav class="navlinks">
+   <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a>
+   <a href="#people">People</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
+  </nav>
+  <button class="menu" aria-label="Menu">☰</button>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">Department of Geology · Central University of South Bihar</div>
+   <h1>GeoHydro-Climate Lab</h1>
+   <p>Advancing geospatial science for water, climate, hazards and sustainable communities through interdisciplinary research, Earth observation and data-driven modelling.</p>
+   <div class="hero-buttons">
+    <a class="btn btn-primary" href="#research">Explore Research</a>
+    <a class="btn btn-outline" href="#contact">Connect with the Lab</a>
+   </div>
+  </div>
+  <div class="hero-visual" aria-label="Abstract Earth observation graphic">
+   <div class="orbit"></div><div class="orbit o2"></div><div class="earth"></div><div class="satellite">🛰️</div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="about">
+ <div class="container about-grid">
+  <div class="section-head">
+   <div class="kicker">About GHC</div>
+   <h2>Science that connects Earth systems, people and place.</h2>
+   <p>GeoHydro-Climate Lab brings together geology, hydrology, climate science and geospatial technologies to understand environmental change and support evidence-based disaster risk reduction and sustainable development.</p>
+  </div>
+  <div class="about-card">
+   <h3>Our approach</h3>
+   <p>We combine GIS, remote sensing, field observations, hydrological and geomorphological analysis, machine learning and scenario modelling to investigate complex environmental systems.</p>
+   <div class="stats">
+    <div class="stat"><strong>GIS</strong><span>Geospatial Science</span></div>
+    <div class="stat"><strong>EO</strong><span>Earth Observation</span></div>
+    <div class="stat"><strong>AI/ML</strong><span>Data-driven Modelling</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section alt" id="research">
+ <div class="container">
+  <div class="section-head"><div class="kicker">Research Themes</div><h2>Interdisciplinary research for a changing Earth.</h2><p>Our research spans environmental processes, hazards, geospatial technologies and community resilience.</p></div>
+  <div class="research-grid">
+   <div class="card"><div class="icon">🌊</div><h3>Hydrology</h3><p>Hydrological processes, watershed dynamics, groundwater and hydro-climatic variability.</p></div>
+   <div class="card"><div class="icon">🌧️</div><h3>Flood Risk</h3><p>Flood hazard, vulnerability, exposure, susceptibility and risk assessment.</p></div>
+   <div class="card"><div class="icon">🛰️</div><h3>Remote Sensing & GIS</h3><p>Earth observation, spatial modelling, geospatial analysis and landscape monitoring.</p></div>
+   <div class="card"><div class="icon">🤖</div><h3>AI & Machine Learning</h3><p>Explainable and data-driven approaches for environmental and geoscience applications.</p></div>
+   <div class="card"><div class="icon">🏔️</div><h3>Geohazards</h3><p>Geomorphic processes, erosion, sediment dynamics and multi-hazard assessment.</p></div>
+   <div class="card"><div class="icon">🌍</div><h3>Climate Change</h3><p>Climate variability, future scenarios and interactions between climate and Earth systems.</p></div>
+   <div class="card"><div class="icon">🏙️</div><h3>Urban Environment</h3><p>Urban morphology, environmental change, heat and risk in rapidly changing landscapes.</p></div>
+   <div class="card"><div class="icon">🌱</div><h3>Sustainability</h3><p>Community resilience, ecosystem services and geospatial decision support for sustainability.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="projects">
+ <div class="container">
+  <div class="section-head"><div class="kicker">Selected Research</div><h2>From local landscapes to regional-scale challenges.</h2></div>
+  <div class="project-grid">
+   <article class="project"><span>Flood · Climate · AI/ML</span><h3>Karmanasa River Basin</h3><p>Integrated flood-risk assessment using Earth observation, hydrological modelling, climate scenarios and machine learning.</p></article>
+   <article class="project"><span>Erosion · Sediment · Geomorphology</span><h3>Sediment Dynamics</h3><p>Assessment of soil erosion, sediment production and watershed response using geospatial and morphometric approaches.</p></article>
+   <article class="project"><span>Groundwater · Remote Sensing</span><h3>Recharge Potential Mapping</h3><p>Multi-source geospatial modelling of groundwater recharge potential and hydrogeological variability.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section alt" id="people">
+ <div class="container">
+  <div class="section-head"><div class="kicker">People</div><h2>Researchers, scholars and learners.</h2><p>GHC Lab supports collaborative research, doctoral work, student projects and hands-on geospatial learning.</p></div>
+  <div class="people">
+   <div class="person"><div class="avatar">PKS</div><h3>Prof. Prafull Kumar Singh</h3><p>Department of Geology<br>Supervisor / Research Mentor</p></div>
+   <div class="person"><div class="avatar">GHC</div><h3>PhD Researchers</h3><p>Geospatial science · Hydrology · Climate · Geohazards · AI/ML</p></div>
+   <div class="person"><div class="avatar">MSc</div><h3>M.Sc. Researchers</h3><p>Practical training, field studies, GIS and remote sensing applications</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="activities">
+ <div class="container">
+  <div class="section-head"><div class="kicker">Lab Activities</div><h2>Research beyond the desk.</h2></div>
+  <div class="timeline">
+   <div class="event"><strong>Field-based learning</strong><p>Geological, geomorphological, hydrological and geospatial field investigations.</p></div>
+   <div class="event"><strong>Training & capacity building</strong><p>Hands-on learning in GIS, remote sensing, geospatial modelling and research workflows.</p></div>
+   <div class="event"><strong>Research seminars & workshops</strong><p>Knowledge exchange through academic discussions, demonstrations and collaborative activities.</p></div>
+   <div class="event"><strong>Environment & outreach</strong><p>Participation in Earth Day, World Environment Day, plantation and community-oriented activities.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section contact" id="contact">
+ <div class="container contact-grid">
+  <div>
+   <div class="kicker">Get in touch</div>
+   <h2>Connect with GeoHydro-Climate Lab.</h2>
+   <p>For research collaboration, student opportunities, training, academic activities or geospatial research discussions, contact the Department of Geology.</p>
+  </div>
+  <div class="contact-box">
+   <div class="contact-item"><strong>Lab</strong>GeoHydro-Climate Lab (GHC)</div>
+   <div class="contact-item"><strong>Department</strong>Department of Geology</div>
+   <div class="contact-item"><strong>Institution</strong>Central University of South Bihar, Gaya</div>
+   <div class="contact-item"><strong>Email</strong><span>your-lab-email@cusb.ac.in</span></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <div>© 2026 GeoHydro-Climate Lab · Department of Geology · CUSB Gaya</div>
+  <div>Research · Geospatial Science · Sustainability</div>
+ </div>
+</footer>
+
+<script>
+const menu=document.querySelector('.menu');
+const nav=document.querySelector('.navlinks');
+menu.addEventListener('click',()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.flexDirection='column';nav.style.position='absolute';nav.style.top='68px';nav.style.right='4%';nav.style.background='white';nav.style.padding='18px 22px';nav.style.border='1px solid #dbe6eb';nav.style.borderRadius='12px';});
+</script>
+</body>
+</html>
