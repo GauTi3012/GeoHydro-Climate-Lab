@@ -112,6 +112,15 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .project p{font-size:13px;color:#e2f0f0}
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .person{border:1px solid var(--line);border-radius:18px;padding:28px;background:white;text-align:center}
+.scholar-link {display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);padding: 5px 12px;border: 1px solid rgba(39, 139, 131, 0.25);border-radius: 20px;background: #f0f7f6;transition: all 0.2s ease;}
+
+.scholar-link:hover {background: var(--teal);color: #fff;border-color: var(--teal);transform: translateY(-1px);}
 .avatar{width:95px;height:95px;margin:0 auto 15px;border-radius:50%;object-fit:cover;display:block;border:3px solid #d9eceb;box-shadow:0 4px 12px rgba(18,48,74,.08);}
 .person h3{color:var(--navy);font-size:18px}.person p{font-size:13px;color:var(--muted)}
 .timeline{border-left:2px solid #cfe1e4;margin-left:10px;padding-left:28px;display:grid;gap:25px}
@@ -253,9 +262,15 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
   <div class="section-head"><div class="kicker">Team</div><h2>Researchers, scholars and learners.</h2><p>GHC Lab supports collaborative research, doctoral work, student projects and hands-on geospatial learning.</p></div>
   <div class="people">
    <div class="person">
-     <img src="images/pks.png" alt="Prof. Prafull Kumar Singh" class="avatar">
+     <img src="images/pks.jpg" alt="Prof. Prafull Kumar Singh" class="avatar">
      <h3>Prof. Prafull Kumar Singh</h3>
-     <p>Principle Investigator<br>https://scholar.google.com/citations?user=OedZhWUAAAAJ</p>
+     <p>Department of Geology (HEAD)<br>Principal Investigator</p>
+     <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="scholar-link">
+       🎓 Google Scholar
+     </a>
    </div>
    <div class="person"><div class="avatar">PhD</div><h3>Research Scholars</h3><p>Geospatial science · Hydrology · Climate · Geohazards · AI/ML</p></div>
    <div class="person"><div class="avatar">MSc</div><h3>Students and Alumni</h3><p>Practical training, field studies, GIS and remote sensing applications</p></div>
