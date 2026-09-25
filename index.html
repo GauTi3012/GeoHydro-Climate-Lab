@@ -550,9 +550,41 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 </footer>
 
 <script>
-const menu=document.querySelector('.menu');
-const nav=document.querySelector('.navlinks');
-menu.addEventListener('click',()=>{nav.style.display=nav.style.display==='flex'?'none':'flex';nav.style.flexDirection='column';nav.style.position='absolute';nav.style.top='68px';nav.style.right='4%';nav.style.background='white';nav.style.padding='18px 22px';nav.style.border='1px solid #dbe6eb';nav.style.borderRadius='12px';});
+// Mobile navigation menu toggle
+const menu = document.querySelector('.menu');
+const nav = document.querySelector('.navlinks');
+menu.addEventListener('click', () => {
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  nav.style.flexDirection = 'column';
+  nav.style.position = 'absolute';
+  nav.style.top = '68px';
+  nav.style.right = '4%';
+  nav.style.background = 'white';
+  nav.style.padding = '18px 22px';
+  nav.style.border = '1px solid #dbe6eb';
+  nav.style.borderRadius = '12px';
+});
+
+// Research Scholars dropdown toggle
+function toggleScholars() {
+  const drawer = document.getElementById('scholarsDrawer');
+  const btn = document.getElementById('scholarsToggle');
+  
+  if (!drawer || !btn) return;
+
+  const isOpen = drawer.classList.toggle('open');
+  btn.classList.toggle('active');
+
+  const textSpan = btn.querySelector('span:first-child');
+  const arrowSpan = btn.querySelector('.arrow');
+
+  if (isOpen) {
+    if (textSpan) textSpan.textContent = 'Hide Scholars';
+    if (arrowSpan) arrowSpan.textContent = '▲';
+    drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } else {
+    if (textSpan) textSpan.textContent = 'View Scholars';
+    if (arrowSpan) arrowSpan.textContent = '▼';
+  }
+}
 </script>
-</body>
-</html>
