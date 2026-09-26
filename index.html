@@ -110,7 +110,134 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .project span{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#cdebe5;font-weight:800}
 .project h3{font-size:22px;line-height:1.2;margin:7px 0}
 .project p{font-size:13px;color:#e2f0f0}
+  <nav class="navlinks">
+   <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a>
+   <a href="#publications">Publications</a>
+   <a href="#people">People</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
+  </nav>
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  /* Publications Grid & Cards */
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.pub-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(18, 48, 74, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.pub-cover-wrap {
+  width: 100%;
+  height: 200px;
+  background: #edf3f5;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.pub-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.pub-card:hover .pub-cover {
+  transform: scale(1.03);
+}
+
+.pub-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pub-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.pub-meta .pub-date {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.pub-title {
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.35;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.pub-title a:hover {
+  color: var(--teal);
+}
+
+.pub-authors {
+  font-size: 13.5px;
+  color: #4b5d68;
+  line-height: 1.45;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.pub-authors strong {
+  color: var(--navy);
+}
+
+.pub-actions {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pub-journal-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue);
+  background: #ebf3f7;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.pub-link-btn {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pub-link-btn:hover {
+  text-decoration: underline;
+}
 .person{border:1px solid var(--line);border-radius:18px;padding:28px;background:white;text-align:center}
 .scholar-link {display: inline-flex;
   align-items: center;
@@ -371,6 +498,149 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
  </div>
 </section>
 
+<section class="section" id="publications">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Scholarly Output</div>
+   <h2>Publications</h2>
+   <p>Peer-reviewed articles, journal publications, and scientific contributions from the GeoHydro-Climate Lab.</p>
+  </div>
+
+  <div class="publications-grid">
+
+   <!-- Paper 1 -->
+   <article class="pub-card">
+    <div class="pub-cover-wrap">
+     <img src="images/paper1.png" alt="Front page of paper 1" class="pub-cover">
+    </div>
+    <div class="pub-body">
+     <div class="pub-meta">
+      <span>Article</span> • <span class="pub-date">August 2026</span>
+     </div>
+     <h3 class="pub-title">
+      <a href="https://doi.org/10.1038/s41598-026-68023-6" target="_blank" rel="noopener noreferrer">
+       Assessment of drought dynamics in the phalgu river basin, middle ganga plain, based on CHIRPS and MODIS- derived indices
+      </a>
+     </h3>
+     <p class="pub-authors">
+      <strong>Authors:</strong> Bibhukalyan Mohapatra, Prafull Kumar Singh
+     </p>
+     <div class="pub-actions">
+      <span class="pub-journal-tag">Scientific Reports</span>
+      <a href="https://doi.org/10.1038/s41598-026-68023-6" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+       View Article ↗
+      </a>
+     </div>
+    </div>
+   </article>
+
+   <!-- Paper 2 -->
+   <article class="pub-card">
+    <div class="pub-cover-wrap">
+     <img src="images/paper2.png" alt="Front page of paper 2" class="pub-cover">
+    </div>
+    <div class="pub-body">
+     <div class="pub-meta">
+      <span>Article</span> • <span class="pub-date">January 2026</span>
+     </div>
+     <h3 class="pub-title">
+      <a href="https://doi.org/10.1007/s41324-025-00657-6" target="_blank" rel="noopener noreferrer">
+       PCA-WSA based hybrid modeling approach for sub-watershedprioritization of Phalgu River Basin, Middle Ganga Plain, India
+      </a>
+     </h3>
+     <p class="pub-authors">
+      <strong>Authors:</strong> Bibhukalyan Mohapatra, Prafull Kumar Singh
+     </p>
+     <div class="pub-actions">
+      <span class="pub-journal-tag">Spatial Information Research</span>
+      <a href="https://doi.org/10.1007/s41324-025-00657-6" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+       View Article ↗
+      </a>
+     </div>
+    </div>
+   </article>
+
+   <!-- Paper 3 -->
+   <article class="pub-card">
+    <div class="pub-cover-wrap">
+     <img src="images/paper3.png" alt="Front page of paper 3" class="pub-cover">
+    </div>
+    <div class="pub-body">
+     <div class="pub-meta">
+      <span>Article</span> • <span class="pub-date">July 2026</span>
+     </div>
+     <h3 class="pub-title">
+      <a href="https://doi.org/10.21203/rs.3.rs-10342326/v1" target="_blank" rel="noopener noreferrer">
+      A Hybrid WSA and AHP-TOPSIS Modeling for Soil Erosion Assessment and Prioritization of the Subwatershed of Karmanasa River Basin
+      </a>
+     </h3>
+     <p class="pub-authors">
+      <strong>Authors:</strong> Ankit Kumar, Prafull Kumar Singh
+     </p>
+     <div class="pub-actions">
+      <span class="pub-journal-tag">Research Square</span>
+      <a href="https://doi.org/10.21203/rs.3.rs-10342326/v1" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+       View Article ↗
+      </a>
+     </div>
+    </div>
+   </article>
+     <!-- Paper 4 -->
+   <article class="pub-card">
+    <div class="pub-cover-wrap">
+     <img src="images/paper4.png" alt="Front page of paper 4" class="pub-cover">
+    </div>
+    <div class="pub-body">
+     <div class="pub-meta">
+      <span>Article</span> • <span class="pub-date">April 2026</span>
+     </div>
+     <h3 class="pub-title">
+      <a href="https://doi.org/10.1007/s43538-026-00775-1" target="_blank" rel="noopener noreferrer">
+      Leveraging Google Earth Engine for groundwater sustainability underchanging climatic conditions
+      </a>
+     </h3>
+     <p class="pub-authors">
+      <strong>Authors:</strong> Suman Kumar, Prafull Kumar Singh
+     </p>
+     <div class="pub-actions">
+      <span class="pub-journal-tag">Proceedings of the Indian National Science Academy</span>
+      <a href="https://doi.org/10.1007/s43538-026-00775-1" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+       View Article ↗
+      </a>
+     </div>
+    </div>
+   </article>
+ <!-- Paper 5 -->
+   <article class="pub-card">
+    <div class="pub-cover-wrap">
+     <img src="images/paper5.png" alt="Front page of paper 5" class="pub-cover">
+    </div>
+    <div class="pub-body">
+     <div class="pub-meta">
+      <span>Article</span> • <span class="pub-date">September 2025</span>
+     </div>
+     <h3 class="pub-title">
+      <a href="https://doi.org/10.1007/s43538-025-00523-x" target="_blank" rel="noopener noreferrer">
+      Flood risk assessment of Aurangabad, Middle Ganga plan, using geospatial data
+      </a>
+     </h3>
+     <p class="pub-authors">
+      <strong>Authors:</strong> Sumo Ranjan Mandal, Ankit Kumar, Prafull Kumar Singh
+     </p>
+     <div class="pub-actions">
+      <span class="pub-journal-tag">Proceedings of the Indian National Science Academy</span>
+      <a href="https://doi.org/10.1007/s43538-025-00523-x" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+       View Article ↗
+      </a>
+     </div>
+    </div>
+   </article>
+
+    
+  </div>
+ </div>
+</section>
+  
 <section class="section alt" id="people">
  <div class="container">
   <div class="section-head">
@@ -475,7 +745,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
       <div class="scholar-profile">
         <img src="images/scholar4.png" alt="Scholar 4" class="scholar-photo">
         <div class="scholar-info">
-          <div class="scholar-name">Scholar Name 4</div>
+          <div class="scholar-name">Ishita</div>
           <div class="scholar-role">PhD Research Scholar</div>
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Surface–Groundwater interactions, Hydro-geochemistry, climate change</div>
@@ -494,7 +764,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
         <img src="images/scholar5.png" alt="Scholar 5" class="scholar-photo">
         <div class="scholar-info">
           <div class="scholar-name">Gautam Kumar</div>
-          <div class="scholar-role">PhD Research Scholar</div>
+          <div class="scholar-role">Project Associate</div>
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Groundwater, Remote Sensing, AI/ML, Wetlands, Climatology</div>
           <div class="scholar-links">
