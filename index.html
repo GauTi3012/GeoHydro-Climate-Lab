@@ -92,6 +92,116 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .about-card{background:white;border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
 .about-card h3{color:var(--navy);margin-bottom:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  /* Lab Activities Slideshow */
+.slider-container {
+  margin-top: 50px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  background: #0b2233;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+  height: 460px;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 35px 25px;
+  background: linear-gradient(to top, rgba(11, 34, 51, 0.9) 0%, rgba(11, 34, 51, 0.4) 60%, transparent 100%);
+  color: #fff;
+}
+
+.slide-caption h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.slide-caption p {
+  font-size: 13.5px;
+  color: #d1e2e9;
+  max-width: 650px;
+}
+
+/* Slider Controls */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  font-size: 18px;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 5;
+}
+
+.slider-btn:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider-btn.prev { left: 18px; }
+.slider-btn.next { right: 18px; }
+
+/* Dot Indicators */
+.slider-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 25px;
+  display: flex;
+  gap: 8px;
+  z-index: 6;
+}
+
+.slider-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.slider-dot.active {
+  background: var(--teal);
+  width: 22px;
+  border-radius: 12px;
+}
+
+@media(max-width: 768px) {
+  .slide { height: 320px; }
+  .slide-caption h4 { font-size: 16px; }
+  .slide-caption p { font-size: 12px; }
+}
 .stat{padding:20px;background:var(--light);border-radius:12px;text-align:center}
 .stat strong{display:block;font-size:25px;color:var(--teal)}
 .stat span{font-size:12px;color:var(--muted)}
@@ -451,21 +561,79 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 </section>
 
 <section class="section" id="about">
- <div class="container about-grid">
-  <div class="section-head">
-   <div class="kicker">About GHC</div>
-   <h2>Science that connects Earth systems, people and place.</h2>
-   <p>The GeoHydro-Climate Lab is an interdisciplinary research group at the intersection of geology, hydrology and climate science dedicated to investigating the complex relationships between the earth, water systems and climate. The overarching goal of the GeoHydro-Climate lab is to observe, analyse, model and understand earth systems to identify pathways towards climate-resilient and sustainable resource management.</p>
-  </div>
-  <div class="about-card">
-   <h3>Our approach</h3>
-   <p>We combine Hydrological and Geomorphological analysis, Field investigation, Laboratory analysis, GIS, Remote Sensing and Machine Learning to investigate complex environmental systems.</p>
-   <div class="stats">
-    <div class="stat"><strong>GIS/RS</strong><span>Geospatial Remote Sensing</span></div>
-    <div class="stat"><strong>TerraHydro</strong><span>Earth and Hydrology</span></div>
-    <div class="stat"><strong>AI/ML</strong><span>Data-driven Modelling</span></div>
+ <div class="container">
+  <div class="about-grid">
+   <div class="section-head">
+    <div class="kicker">About GHC</div>
+    <h2>Science that connects Earth systems, people and place.</h2>
+    <p>The GeoHydro-Climate Lab is an interdisciplinary research group at the intersection of geology, hydrology and climate science dedicated to investigating the complex relationships between the earth, water systems and climate. The overarching goal of the GeoHydro-Climate lab is to observe, analyse, model and understand earth systems to identify pathways towards climate-resilient and sustainable resource management.</p>
+   </div>
+   <div class="about-card">
+    <h3>Our approach</h3>
+    <p>We combine Hydrological and Geomorphological analysis, Field investigation, Laboratory analysis, GIS, Remote Sensing and Machine Learning to investigate complex environmental systems.</p>
+    <div class="stats">
+     <div class="stat"><strong>GIS/RS</strong><span>Geospatial Remote Sensing</span></div>
+     <div class="stat"><strong>TerraHydro</strong><span>Earth and Hydrology</span></div>
+     <div class="stat"><strong>AI/ML</strong><span>Data-driven Modelling</span></div>
+    </div>
    </div>
   </div>
+
+  <!-- Lab Activities Slideshow -->
+  <div class="slider-container" id="activitySlider">
+    <div class="slider-track" id="sliderTrack">
+
+      <!-- Slide 1 -->
+      <div class="slide">
+        <img src="images/activity1.png" alt="Field Hydrological Investigation">
+        <div class="slide-caption">
+          <h4>Field-Based Hydrological Investigations</h4>
+          <p>Multi-parameter groundwater testing, discharge measuring, and field validation campaigns.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <img src="images/activity2.png" alt="Laboratory Analysis">
+        <div class="slide-caption">
+          <h4>Hydro-geochemical Analysis</h4>
+          <p>Sample preparation, dissolved ion analysis, and physical-chemical property assessment.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <img src="images/activity3.png" alt="GIS & Earth Observation Training">
+        <div class="slide-caption">
+          <h4>Computing & Geospatial Modeling</h4>
+          <p>High-resolution satellite image processing, spatial classification, and predictive modeling.</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide">
+        <img src="images/activity4.png" alt="Workshops and Group Sessions">
+        <div class="slide-caption">
+          <h4>Seminars & Hands-On Workshops</h4>
+          <p>Collaborative discussions, technical research presentations, and capacity building sessions.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">&#10094;</button>
+    <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Slide">&#10095;</button>
+
+    <!-- Navigation Dots -->
+    <div class="slider-dots" id="sliderDots">
+      <button class="slider-dot active" onclick="jumpToSlide(0)"></button>
+      <button class="slider-dot" onclick="jumpToSlide(1)"></button>
+      <button class="slider-dot" onclick="jumpToSlide(2)"></button>
+      <button class="slider-dot" onclick="jumpToSlide(3)"></button>
+    </div>
+  </div>
+
  </div>
 </section>
 
@@ -857,4 +1025,42 @@ function toggleScholars() {
     if (arrowSpan) arrowSpan.textContent = '▼';
   }
 }
+  let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const track = document.getElementById('sliderTrack');
+const dots = document.querySelectorAll('.slider-dot');
+let slideInterval;
+
+function updateSlider() {
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlide);
+  });
+}
+
+function moveSlide(direction) {
+  currentSlide = (currentSlide + direction + slides.length) % slides.length;
+  updateSlider();
+  resetAutoSlide();
+}
+
+function jumpToSlide(index) {
+  currentSlide = index;
+  updateSlider();
+  resetAutoSlide();
+}
+
+function startAutoSlide() {
+  slideInterval = setInterval(() => {
+    moveSlide(1);
+  }, 4500); // Transitions every 4.5 seconds
+}
+
+function resetAutoSlide() {
+  clearInterval(slideInterval);
+  startAutoSlide();
+}
+
+// Start auto-rotation on load
+startAutoSlide();
 </script>
