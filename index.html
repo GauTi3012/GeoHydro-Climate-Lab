@@ -17,53 +17,248 @@ body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.
 a{text-decoration:none;color:inherit}
 .container{width:min(1160px,92%);margin:auto}
 .navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
-.logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--navy),var(--teal));color:white;font-size:12px;letter-spacing:.5px;border:3px solid #d9eceb}
-.brand small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px}
-  .ghc-logo{
-    width:52px;
-    height:52px;
-    object-fit:contain;
-    flex-shrink:0;
+/* Increased navbar height to accommodate larger logos and text */
+.nav-inner {
+  min-height: 96px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;}
+/* Centered brand block with symmetrical flanking logos */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex: 1;
+  text-decoration: none;}
+/* Enlarged Logos */
+.ghc-logo {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;}
+.cusb-logo {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none; /* removed side divider line for clean centering */
+  flex-shrink: 0;
+  transition: transform 0.2s ease;}
+.brand:hover .ghc-logo,
+.brand:hover .cusb-logo {
+  transform: scale(1.04);}
+/* Centered & Enlarged Text */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.25;}
+.brand-text strong {
+  font-size: 26px;
+  font-weight: 850;
+  letter-spacing: -0.5px;
+  color: var(--navy);}
+.brand-text small {
+  display: block;
+  margin-top: 5px;
+  font-size: 13.5px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.3px;}
+/* Mobile adjustments */
+@media(max-width: 900px) {
+  .nav-inner { min-height: 82px; }
+  .ghc-logo, .cusb-logo { width: 56px; height: 56px; }
+  .brand-text strong { font-size: 20px; }
+  .brand-text small { font-size: 11px; }}
+@media(max-width: 560px) {
+  .brand { gap: 10px; }
+  .ghc-logo, .cusb-logo { width: 46px; height: 46px; }
+  .brand-text strong { font-size: 16px; }
+  .brand-text small { font-size: 9.5px; }}
+  
+/* News & Gallery Slideshow */
+.gallery-slider-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  background: #0b2233;
 }
 
-.cusb-logo{
-    width:58px;
-    height:58px;
-    object-fit:contain;
-    margin-left:14px;
-    padding-left:14px;
-    border-left:1px solid var(--line);
-    flex-shrink:0;
+.gallery-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-.brand-text{
-    display:flex;
-    flex-direction:column;
-    line-height:1.15;
+.gallery-slide {
+  min-width: 100%;
+  position: relative;
+  height: 480px;
+  cursor: pointer;
 }
 
-.brand-text strong{
-    font-size:18px;
-    color:var(--navy);
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.brand-text small{
-    display:block;
-    margin-top:5px;
-    font-size:10px;
-    color:var(--muted);
-    font-weight:600;
+.gallery-slide:hover img {
+  transform: scale(1.02);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 35px 35px 25px;
+  background: linear-gradient(to top, rgba(11, 34, 51, 0.92) 0%, rgba(11, 34, 51, 0.45) 60%, transparent 100%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.gallery-tag {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #bfe8df;
+  background: rgba(39, 139, 131, 0.35);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.gallery-caption h3 {
+  font-size: 21px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.gallery-caption p {
+  font-size: 13.5px;
+  color: #d1e2e9;
+  max-width: 700px;
+}
+
+.gallery-hint {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: #bfe8df;
+  font-weight: 600;
+}
+
+/* Full-Screen Lightbox Modal */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(11, 34, 51, 0.94);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  animation: modalFadeIn 0.25s ease;
+}
+
+.gallery-modal.active {
+  display: flex;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content-wrap {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-caption-text {
+  color: #e1f0f2;
+  margin-top: 14px;
+  font-size: 15px;
+  text-align: center;
+  max-width: 750px;
+  line-height: 1.4;
+}
+
+/* Close Button (Top-Right Cross Mark) */
+.modal-close-btn {
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10000;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+@media(max-width: 768px) {
+  .gallery-slide { height: 320px; }
+  .gallery-caption h3 { font-size: 17px; }
+  .gallery-caption p { font-size: 12px; }
+  .modal-close-btn { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 24px; }
 }
 .navlinks{display:flex;gap:25px;font-size:14px;font-weight:650}
 .navlinks a:hover{color:var(--teal)}
 .menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
-.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#0f2e46 0%,#165b72 55%,#23877e 100%);color:white}
-.hero:before{content:"";position:absolute;inset:0;background:
-radial-gradient(circle at 80% 25%,rgba(255,255,255,.14),transparent 25%),
-linear-gradient(145deg,transparent 48%,rgba(255,255,255,.06) 49%,transparent 50%),
-linear-gradient(35deg,transparent 48%,rgba(255,255,255,.05) 49%,transparent 50%);opacity:.8}
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Dark overlay + background image */
+  background: 
+    linear-gradient(rgba(11, 34, 51, 0.78), rgba(18, 48, 74, 0.82)),
+    url('images/background.png') center/cover no-repeat;
+  color: white;}
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 70%);
+  pointer-events: none;}
 .hero-grid{position:relative;min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px}
 .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#bfe8df;margin-bottom:18px}
 h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2px;margin-bottom:22px}
@@ -221,8 +416,9 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .project h3{font-size:22px;line-height:1.2;margin:7px 0}
 .project p{font-size:13px;color:#e2f0f0}
   <nav class="navlinks">
-   <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a>
+   <a href="#about">Home</a><a href="#research">Research</a><a href="#projects">Projects</a>
    <a href="#publications">Publications</a>
+   <a href="#gallery">Gallery</a>
    <a href="#people">People</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
   </nav>
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -467,6 +663,7 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .s-linkedin { background: #0077b5; }
 .s-x { background: #00acee; }
 .s-rg { background: #00ccbb; }
+.s-sc { background: #ff6f00; font-size: 10px; font-weight: 800; }
 
 @media(max-width: 768px) {
   .scholars-grid {
@@ -478,11 +675,104 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .timeline{border-left:2px solid #cfe1e4;margin-left:10px;padding-left:28px;display:grid;gap:25px}
 .event{position:relative}.event:before{content:"";position:absolute;width:11px;height:11px;background:var(--teal);border-radius:50%;left:-35px;top:7px;border:3px solid white;box-shadow:0 0 0 1px var(--teal)}
 .event strong{color:var(--navy)}.event p{font-size:14px;color:var(--muted);margin-top:3px}
-.contact{background:var(--navy);color:white}
-.contact h2{color:white}.contact p{color:#cbdde3}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
-.contact-box{padding:28px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:rgba(255,255,255,.05)}
-.contact-item{margin:13px 0}.contact-item strong{display:block;color:#bfe8df;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+/* Contact Section Restructured */
+.contact {
+  background: var(--navy);
+  color: white;
+  padding: 85px 0 95px;}
+.contact-header {
+  margin-bottom: 45px;}
+.contact-header h2 {
+  color: white;
+  margin: 10px 0 14px;}
+.contact-header p {
+  color: #cbdde3;
+  font-size: 16px;
+  max-width: 780px;}
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 45px;
+  align-items: stretch;}
+/* Contact Details Side */
+.contact-card-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;}
+.contact-card-box h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);}
+.contact-subheading {
+  font-size: 18px;
+  font-weight: 750;
+  color: #ffffff;
+  margin-bottom: 8px;}
+.contact-address {
+  font-size: 14px;
+  color: #cbdde3;
+  line-height: 1.6;
+  margin-bottom: 18px;}
+.contact-entry {
+  font-size: 14px;
+  color: #cbdde3;
+  margin: 7px 0;
+  line-height: 1.5;}
+.contact-entry strong {
+  color: #bfe8df;
+  font-weight: 700;}
+.contact-entry a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;}
+.contact-entry a:hover {
+  color: #bfe8df;}
+/* Social Badges inside Contact Box */
+.contact-social-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);}
+/* Map Side */
+.contact-map-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;}
+.contact-map-box h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;}
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);}
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;}
+@media(max-width: 900px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 35px; }
+  .map-wrapper {
+    min-height: 290px; }}
 footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
 @media(max-width:900px){
@@ -518,8 +808,8 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 </head>
 <body>
 
+<!-- With this: -->
 <a class="brand" href="#home">
-
     <img src="images/ghc-logo.png"
          class="ghc-logo"
          alt="GeoHydro-Climate Lab Logo">
@@ -532,8 +822,8 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
     <img src="images/cusb-logo.png"
          class="cusb-logo"
          alt="Central University of South Bihar Logo">
-
 </a>
+  
   <nav class="navlinks">
    <a href="#about">Home</a><a href="#research">Research</a><a href="#projects">Projects</a>
    <a href="#people">People</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
@@ -808,6 +1098,76 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
   </div>
  </div>
 </section>
+
+  <!-- News & Gallery Section -->
+<section class="section" id="gallery">
+ <div class="container">
+  <div class="section-head">
+   <div class="kicker">Updates & Highlights</div>
+   <h2>News & Gallery</h2>
+   <p>Recent events, field investigations, laboratory milestones, and academic conferences from the GeoHydro-Climate Lab.</p>
+  </div>
+
+  <div class="gallery-slider-wrap" id="gallerySlider">
+    <div class="gallery-track" id="galleryTrack">
+
+      <!-- Slide 1 -->
+      <div class="gallery-slide" onclick="openLightbox('images/gallery1.png', 'National Conference on Geospatial Technology & Hydrology — Keynote and research presentations')">
+        <img src="images/gallery1.png" alt="National Conference Presentation">
+        <div class="gallery-caption">
+          <span class="gallery-tag">Conference & Workshop</span>
+          <h3>National Conference on Geospatial Technology & Hydrology</h3>
+          <p>Prof. Prafull Kumar Singh and research scholars presenting latest predictive hydrological and drought modeling insights.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="gallery-slide" onclick="openLightbox('images/gallery2.png', 'Field-based hydrological & hydro-chemical sampling along the Phalgu and Karmanasa basins')">
+        <img src="images/gallery2.png" alt="Field Research Work">
+        <div class="gallery-caption">
+          <span class="gallery-tag">Field Investigation</span>
+          <h3>Fieldwork & In-situ Groundwater Sampling</h3>
+          <p>Collection of groundwater and surface water samples alongside real-time multi-parameter sensor validation.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="gallery-slide" onclick="openLightbox('images/gallery3.png', 'Hands-on Geospatial Training on Google Earth Engine & Machine Learning Models')">
+        <img src="images/gallery3.png" alt="Lab Hands-on Training">
+        <div class="gallery-caption">
+          <span class="gallery-tag">Lab Training</span>
+          <h3>Hands-on Geospatial and Earth Engine Training</h3>
+          <p>Capacity building program on multi-spectral satellite image processing and environmental hazard delineation.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="slider-btn prev" onclick="moveGallerySlide(-1)" aria-label="Previous Slide">&#10094;</button>
+    <button class="slider-btn next" onclick="moveGallerySlide(1)" aria-label="Next Slide">&#10095;</button>
+
+    <!-- Indicators -->
+    <div class="slider-dots" id="galleryDots">
+      <button class="slider-dot active" onclick="jumpToGallerySlide(0)"></button>
+      <button class="slider-dot" onclick="jumpToGallerySlide(1)"></button>
+      <button class="slider-dot" onclick="jumpToGallerySlide(2)"></button>
+    </div>
+  </div>
+ </div>
+</section>
+
+<!-- Full-Screen Lightbox Modal -->
+<div class="gallery-modal" id="galleryModal" onclick="closeLightbox(event)">
+  <button class="modal-close-btn" onclick="closeLightbox(event)" aria-label="Close Fullscreen">&times;</button>
+  <div class="modal-content-wrap" onclick="event.stopPropagation()">
+    <img id="modalImg" src="" alt="Fullscreen Image" class="modal-image">
+    <div id="modalCaption" class="modal-caption-text"></div>
+  </div>
+</div>
   
 <section class="section alt" id="people">
  <div class="container">
@@ -817,17 +1177,21 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
     <p>GHC Lab supports collaborative research, doctoral work, student projects and hands-on geospatial learning.</p>
   </div>
 
-  <div class="people">
-   <!-- Card 1: PI -->
+  <!-- Card 1: PI -->
    <div class="person">
      <img src="images/pks.png" alt="Prof. Prafull Kumar Singh" class="avatar">
      <h3>Prof. Prafull Kumar Singh</h3>
-     <p>Department of Geology</P>
-     <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" target="_blank" rel="noopener noreferrer" class="scholar-link"> 🎓 Google Scholar </a>
-     <a href="prafullsingh@cusb.ac.in" class="s-icon s-mail" title="Email">✉</a>
-      <a href="https://www.linkedin.com/in/prof-prafull-kumar-singh-35748b8/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
-      <a href="https://www.scopus.com/authid/detail.uri?authorId=54394070900" target="_blank" class="s-icon s-sc" title="SCOPUS">SC</a>
-      <a href="https://www.researchgate.net/profile/Prof-Singh-7" target="_blank" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
+     <p>Department of Geology (HEAD)<br>Principal Investigator</p>
+     
+     <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+       <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" target="_blank" rel="noopener noreferrer" class="scholar-link" style="margin-top: 0;">
+         🎓 Google Scholar
+       </a>
+       <a href="mailto:prafullsingh@cusb.ac.in" class="s-icon s-mail" title="Email">✉</a>
+       <a href="https://www.linkedin.com/in/prof-prafull-kumar-singh-35748b8/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
+       <a href="https://www.scopus.com/authid/detail.uri?authorId=54394070900" target="_blank" class="s-icon s-sc" title="SCOPUS">SC</a>
+       <a href="https://www.researchgate.net/profile/Prof-Singh-7" target="_blank" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
+     </div>
    </div>
 
    <!-- Card 2: Research Scholars with Dropdown -->
@@ -857,7 +1221,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Hydrogeology and groundwater modelling</div>
           <div class="scholar-links">
-            <a href="geobibhu2015@gmail.com" class="s-icon s-mail" title="Email">✉</a>
+            <a href="mailto:geobibhu2015@gmail.com" class="s-icon s-mail" title="Email">✉</a>
             <a href="#" target="_blank" class="s-icon s-scholar" title="Google Scholar">G</a>
             <a href="https://www.linkedin.com/in/bibhukalyan-mohapatra-243956173/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
             <a href="#" target="_blank" class="s-icon s-x" title="Twitter / X">🐦</a>
@@ -875,7 +1239,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Hydro-geochemistry and Groundwater modelling</div>
           <div class="scholar-links">
-            <a href="sumankumar@cusb.ac.in" class="s-icon s-mail" title="Email">✉</a>
+            <a href="mailto:sumankumar@cusb.ac.in" class="s-icon s-mail" title="Email">✉</a>
             <a href="#" target="_blank" class="s-icon s-scholar" title="Google Scholar">G</a>
             <a href="https://www.linkedin.com/in/suman-kumar-7778ab260/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
             <a href="#" target="_blank" class="s-icon s-x" title="Twitter / X">🐦</a>
@@ -893,7 +1257,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Flood, Climate, Remote Sensing, Machine Learning</div>
           <div class="scholar-links">
-            <a href="kumarankit.4286@gmail.com" class="s-icon s-mail" title="Email">✉</a>
+            <a href="mailto:kumarankit.4286@gmail.com" class="s-icon s-mail" title="Email">✉</a>
             <a href="#" target="_blank" class="s-icon s-scholar" title="Google Scholar">G</a>
             <a href="https://www.linkedin.com/in/kumar-ankit-326652172/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
             <a href="#" target="_blank" class="s-icon s-x" title="Twitter / X">🐦</a>
@@ -911,7 +1275,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Surface–Groundwater interactions, Hydro-geochemistry, climate change</div>
           <div class="scholar-links">
-            <a href="ishita.singh8228@gmail.com" class="s-icon s-mail" title="Email">✉</a>
+            <a href="mailto:ishita.singh8228@gmail.com" class="s-icon s-mail" title="Email">✉</a>
             <a href="#" target="_blank" class="s-icon s-scholar" title="Google Scholar">G</a>
             <a href="#" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
             <a href="#" target="_blank" class="s-icon s-x" title="Twitter / X">🐦</a>
@@ -929,7 +1293,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
           <div class="scholar-interests-label">Research Interests:</div>
           <div class="scholar-interests-text">Groundwater, Remote Sensing, AI/ML, Wetlands, Climatology</div>
           <div class="scholar-links">
-            <a href="gautamsingh9128@gmail.com" class="s-icon s-mail" title="Email">✉</a>
+            <a href="mailto:gautamsingh9128@gmail.com" class="s-icon s-mail" title="Email">✉</a>
             <a href="#" target="_blank" class="s-icon s-scholar" title="Google Scholar">G</a>
             <a href="https://www.linkedin.com/in/gautam-kumar-singh-867544247/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
             <a href="https://x.com/gautamsingh9128" target="_blank" class="s-icon s-x" title="Twitter / X">🐦</a>
@@ -957,18 +1321,66 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 </section>
 
 <section class="section contact" id="contact">
- <div class="container contact-grid">
-  <div>
+ <div class="container">
+  
+  <!-- Header on Top -->
+  <div class="contact-header">
    <div class="kicker">Get in touch</div>
    <h2>Connect with GeoHydro-Climate Lab.</h2>
    <p>For research collaboration, student opportunities, training, academic activities or geospatial research discussions, contact the Department of Geology.</p>
   </div>
-  <div class="contact-box">
-   <div class="contact-item"><strong>Name</strong>Prof. Prafull Kumar Singh</div>
-   <div class="contact-item"><strong>Department</strong>Department of Geology</div>
-   <div class="contact-item"><strong>Institution</strong>Central University of South Bihar, Gaya</div>
-   <div class="contact-item"><strong>Email</strong><span>geohydroclimatelab.cusb@gmail.com</span></div>
-   <div class="contact-item"><strong>Phone</strong>+91 9958196406</div>
+
+  <!-- Bottom Two-Column Split (Contact Info + Map) -->
+  <div class="contact-main-grid">
+
+   <!-- Left Column: Contact Details -->
+   <div class="contact-card-box">
+    <div>
+      <h3>Contact Details</h3>
+      <div class="contact-subheading">Prof. Prafull Kumar Singh</div>
+      <div class="contact-address">
+        Department of Geology, School of Earth, Biological and Environmental Sciences<br>
+        Central University of South Bihar (CUSB)<br>
+        SH-7, Gaya-Panchanpur Road, Gaya, Bihar – 824236, India
+      </div>
+
+      <div class="contact-entry">
+        <strong>Lab Email:</strong> <a href="mailto:geohydroclimatelab.cusb@gmail.com">geohydroclimatelab.cusb@gmail.com</a>
+      </div>
+      <div class="contact-entry">
+        <strong>Institutional Email:</strong> <a href="mailto:prafullsingh@cusb.ac.in">prafullsingh@cusb.ac.in</a>
+      </div>
+      <div class="contact-entry">
+        <strong>Phone:</strong> +91 9958196406
+      </div>
+    </div>
+
+    <!-- Social & Academic Badges -->
+    <div class="contact-social-row">
+      <a href="mailto:geohydroclimatelab.cusb@gmail.com" class="s-icon s-mail" title="Email">✉</a>
+      <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" target="_blank" rel="noopener noreferrer" class="s-icon s-scholar" title="Google Scholar">G</a>
+      <a href="https://www.linkedin.com/in/prof-prafull-kumar-singh-35748b8/" target="_blank" rel="noopener noreferrer" class="s-icon s-linkedin" title="LinkedIn">in</a>
+      <a href="https://www.scopus.com/authid/detail.uri?authorId=54394070900" target="_blank" rel="noopener noreferrer" class="s-icon s-sc" title="SCOPUS">SC</a>
+      <a href="https://www.researchgate.net/profile/Prof-Singh-7" target="_blank" rel="noopener noreferrer" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
+    </div>
+   </div>
+
+   <!-- Right Column: Interactive Google Map -->
+   <div class="contact-map-box">
+    <h3>Office location</h3>
+    <div class="map-wrapper">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.467406859346!2d84.90807577598858!3d24.88194487791443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32b6dd4355555%3A0xe549a1d47a06041c!2sCentral%20University%20of%20South%20Bihar!5e0!3m2!1sen!2sin!4v1717000000000!5m2!1sen!2sin" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+   </div>
+
   </div>
  </div>
 </section>
@@ -1057,4 +1469,71 @@ function resetAutoSlide() {
 
 // Start auto-rotation on load
 startAutoSlide();
+  // News & Gallery Carousel Logic
+let currentGallerySlide = 0;
+const gallerySlides = document.querySelectorAll('.gallery-slide');
+const galleryTrack = document.getElementById('galleryTrack');
+const galleryDots = document.querySelectorAll('#galleryDots .slider-dot');
+let galleryInterval;
+
+function updateGallerySlider() {
+  if (!galleryTrack) return;
+  galleryTrack.style.transform = `translateX(-${currentGallerySlide * 100}%)`;
+  galleryDots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentGallerySlide);
+  });
+}
+
+function moveGallerySlide(direction) {
+  if (!gallerySlides.length) return;
+  currentGallerySlide = (currentGallerySlide + direction + gallerySlides.length) % gallerySlides.length;
+  updateGallerySlider();
+  resetGalleryAutoSlide();
+}
+
+function jumpToGallerySlide(index) {
+  currentGallerySlide = index;
+  updateGallerySlider();
+  resetGalleryAutoSlide();
+}
+
+function startGalleryAutoSlide() {
+  galleryInterval = setInterval(() => {
+    moveGallerySlide(1);
+  }, 5000);
+}
+
+function resetGalleryAutoSlide() {
+  clearInterval(galleryInterval);
+  startGalleryAutoSlide();
+}
+
+// Lightbox Modal Functions
+function openLightbox(imageSrc, captionText) {
+  const modal = document.getElementById('galleryModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalCaption = document.getElementById('modalCaption');
+  
+  modalImg.src = imageSrc;
+  modalCaption.textContent = captionText;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevents background scroll
+}
+
+function closeLightbox(e) {
+  if (e) e.stopPropagation();
+  const modal = document.getElementById('galleryModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = ''; // Restores scroll
+}
+
+// Close lightbox on 'Escape' key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+
+// Initialize Gallery slider
+startGalleryAutoSlide();
 </script>
