@@ -17,50 +17,47 @@ body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.
 a{text-decoration:none;color:inherit}
 .container{width:min(1160px,92%);margin:auto}
 .navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-/* Increased navbar height to accommodate larger logos and text */
+/* Navbar layout with brand on left/center and navlinks on far right */
 .nav-inner {
-  min-height: 96px;
+  min-height: 110px;
   padding: 10px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;}
-/* Centered brand block with symmetrical flanking logos */
+  gap: 30px;}
+/* Brand cluster */
 .brand {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex: 1;
+  gap: 18px;
   text-decoration: none;}
-/* Enlarged Logos */
+/* Further Enlarged Logos */
 .ghc-logo {
-  width: 78px;
-  height: 78px;
+  width: 95px;
+  height: 95px;
   object-fit: contain;
   flex-shrink: 0;
   transition: transform 0.2s ease;}
 .cusb-logo {
-  width: 78px;
-  height: 78px;
+  width: 95px;
+  height: 95px;
   object-fit: contain;
   margin-left: 0;
   padding-left: 0;
-  border-left: none; /* removed side divider line for clean centering */
+  border-left: none;
   flex-shrink: 0;
   transition: transform 0.2s ease;}
 .brand:hover .ghc-logo,
 .brand:hover .cusb-logo {
-  transform: scale(1.04);}
-/* Centered & Enlarged Text */
+  transform: scale(1.05);}
+/* Brand Text */
 .brand-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  line-height: 1.25;}
+  align-items: flex-start;
+  line-height: 1.2;}
 .brand-text strong {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 850;
   letter-spacing: -0.5px;
   color: var(--navy);}
@@ -70,7 +67,34 @@ a{text-decoration:none;color:inherit}
   font-size: 13.5px;
   color: var(--muted);
   font-weight: 600;
-  letter-spacing: 0.3px;}
+  letter-spacing: 0.2px;}
+/* Nav links pulled right */
+.navlinks {
+  display: flex;
+  gap: 22px;
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-left: auto; /* Pushes navigation all the way to the right */
+  align-items: center;}
+.navlinks a {
+  color: var(--ink);
+  transition: color 0.2s ease;
+  white-space: nowrap;}
+.navlinks a:hover {
+  color: var(--teal);}
+/* Responsive adjustments */
+@media(max-width: 1100px) {
+  .ghc-logo, .cusb-logo { width: 75px; height: 75px; }
+  .brand-text strong { font-size: 22px; }
+  .brand-text small { font-size: 11.5px; }
+  .navlinks { gap: 14px; font-size: 13px; }}
+@media(max-width: 900px) {
+  .navlinks { display: none; }
+  .menu { display: block; margin-left: auto; }
+  .nav-inner { min-height: 85px; }
+  .ghc-logo, .cusb-logo { width: 60px; height: 60px; }
+  .brand-text strong { font-size: 18px; }
+  .brand-text small { font-size: 10px; }}
 /* Mobile adjustments */
 @media(max-width: 900px) {
   .nav-inner { min-height: 82px; }
@@ -245,12 +269,11 @@ a{text-decoration:none;color:inherit}
 .navlinks{display:flex;gap:25px;font-size:14px;font-weight:650}
 .navlinks a:hover{color:var(--teal)}
 .menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
-.hero {
-  position: relative;
+.hero {position: relative;
   overflow: hidden;
-  /* Dark overlay + background image */
+  /* Increased transparency so the image shows clearly */
   background: 
-    linear-gradient(rgba(11, 34, 51, 0.78), rgba(18, 48, 74, 0.82)),
+    linear-gradient(rgba(11, 34, 51, 0.38), rgba(18, 48, 74, 0.45)),
     url('images/background.png') center/cover no-repeat;
   color: white;}
 .hero:before {
@@ -808,32 +831,37 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
 </head>
 <body>
 
-<!-- With this: -->
-<a class="brand" href="#home">
-    <img src="images/ghc-logo.png"
-         class="ghc-logo"
-         alt="GeoHydro-Climate Lab Logo">
+<header class="navbar">
+  <div class="container nav-inner">
 
-    <div class="brand-text">
+    <a class="brand" href="#home">
+      <img src="images/ghc-logo.png" class="ghc-logo" alt="GeoHydro-Climate Lab Logo">
+      <div class="brand-text">
         <strong>GeoHydro-Climate Lab</strong>
         <small>Department of Geology · Central University of South Bihar, Gaya</small>
-    </div>
+      </div>
+      <img src="images/cusb-logo.png" class="cusb-logo" alt="Central University of South Bihar Logo">
+    </a>
+    
+    <nav class="navlinks">
+      <a href="#about">Home</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#people">People</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-    <img src="images/cusb-logo.png"
-         class="cusb-logo"
-         alt="Central University of South Bihar Logo">
-</a>
-  
-  <nav class="navlinks">
-   <a href="#about">Home</a><a href="#research">Research</a><a href="#projects">Projects</a>
-   <a href="#people">People</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
-  </nav>
-  <button class="menu" aria-label="Menu">☰</button>
- </div>
+    <button class="menu" aria-label="Menu">☰</button>
+
+  </div>
 </header>
-
+  
 <main>
-<section class="hero" id="home">
+
+  <section class="hero" id="home">
  <div class="container hero-grid">
   <div>
    <div class="eyebrow">Department of Geology · Central University of South Bihar</div>
@@ -1339,38 +1367,29 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
       <h3>Contact Details</h3>
       <div class="contact-subheading">Prof. Prafull Kumar Singh</div>
       <div class="contact-address">
-        Department of Geology, School of Earth, Biological and Environmental Sciences<br>
+        Department of Geology, 3rd floor, School of Earth, Biological and Environmental Sciences<br>
         Central University of South Bihar (CUSB)<br>
         SH-7, Gaya-Panchanpur Road, Gaya, Bihar – 824236, India
       </div>
 
       <div class="contact-entry">
-        <strong>Lab Email:</strong> <a href="mailto:geohydroclimatelab.cusb@gmail.com">geohydroclimatelab.cusb@gmail.com</a>
-      </div>
-      <div class="contact-entry">
-        <strong>Institutional Email:</strong> <a href="mailto:prafullsingh@cusb.ac.in">prafullsingh@cusb.ac.in</a>
-      </div>
-      <div class="contact-entry">
         <strong>Phone:</strong> +91 9958196406
+      </div>
+      <div class="contact-entry">
+        <strong>Email:</strong> <a href="mailto:prafullsingh@cusb.ac.in">prafullsingh@cusb.ac.in</a>
+      </div>
+      <div class="contact-entry">
+        <strong>Lab Email:</strong> <a href="mailto:geohydroclimatelab.cusb@gmail.com">geohydroclimatelab.cusb@gmail.com</a>
       </div>
     </div>
 
-    <!-- Social & Academic Badges -->
-    <div class="contact-social-row">
-      <a href="mailto:geohydroclimatelab.cusb@gmail.com" class="s-icon s-mail" title="Email">✉</a>
-      <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" target="_blank" rel="noopener noreferrer" class="s-icon s-scholar" title="Google Scholar">G</a>
-      <a href="https://www.linkedin.com/in/prof-prafull-kumar-singh-35748b8/" target="_blank" rel="noopener noreferrer" class="s-icon s-linkedin" title="LinkedIn">in</a>
-      <a href="https://www.scopus.com/authid/detail.uri?authorId=54394070900" target="_blank" rel="noopener noreferrer" class="s-icon s-sc" title="SCOPUS">SC</a>
-      <a href="https://www.researchgate.net/profile/Prof-Singh-7" target="_blank" rel="noopener noreferrer" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
-    </div>
-   </div>
 
    <!-- Right Column: Interactive Google Map -->
    <div class="contact-map-box">
-    <h3>Office location</h3>
+    <h3>Lab location</h3>
     <div class="map-wrapper">
       <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.467406859346!2d84.90807577598858!3d24.88194487791443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32b6dd4355555%3A0xe549a1d47a06041c!2sCentral%20University%20of%20South%20Bihar!5e0!3m2!1sen!2sin!4v1717000000000!5m2!1sen!2sin" 
+        src="https://maps.app.goo.gl/UpyHuaJQEWNvMRVv9" 
         width="100%" 
         height="100%" 
         style="border:0;" 
