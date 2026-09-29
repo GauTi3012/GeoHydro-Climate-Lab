@@ -50,24 +50,27 @@ a{text-decoration:none;color:inherit}
 .brand:hover .ghc-logo,
 .brand:hover .cusb-logo {
   transform: scale(1.05);}
-/* Brand Text */
+
+  /* Brand Text */
 .brand-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   line-height: 1.2;}
 .brand-text strong {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 850;
   letter-spacing: -0.5px;
-  color: var(--navy);}
+  color: var(--navy);
+  white-space: nowrap; /* Ensures single line in navbar */}
 .brand-text small {
   display: block;
   margin-top: 5px;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--muted);
   font-weight: 600;
-  letter-spacing: 0.2px;}
+  letter-spacing: 0.2px;
+  white-space: nowrap;}
 /* Nav links pulled right */
 .navlinks {
   display: flex;
@@ -282,11 +285,52 @@ a{text-decoration:none;color:inherit}
   inset: 0;
   background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 70%);
   pointer-events: none;}
-.hero-grid{position:relative;min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px}
-.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#bfe8df;margin-bottom:18px}
-h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2px;margin-bottom:22px}
-.hero p{font-size:19px;max-width:680px;color:#e1f0f2}
-.hero-buttons{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+/* Hero aligned to the right side */
+.hero-grid {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  justify-content: flex-end; /* Pushes content container to the right */
+  align-items: center;
+  padding: 60px 0;}
+.hero-right-content {
+  max-width: 680px;
+  text-align: right; /* Aligns all text inside to the right */
+  margin-left: auto;}
+
+/* Single-line Hero Title */
+h1 {
+  font-size: clamp(34px, 4.2vw, 56px); /* Scaled so it fits on one line */
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  white-space: nowrap; /* Forces single line */
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);}
+.eyebrow {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #bfe8df;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);}
+.hero p {
+  font-size: 18px;
+  color: #e1f0f2;
+  line-height: 1.6;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  margin-left: auto;}
+/* Buttons docked to the right */
+.hero-buttons {display: flex;gap: 14px;margin-top: 28px;flex-wrap: wrap;justify-content: flex-end; /* Right-align buttons */
+}
+@media(max-width: 900px) {
+  h1 {white-space: normal; /* Permits wrapping gracefully on smaller mobile viewports */
+    font-size: 38px;}
+  .hero-grid {justify-content: center;}
+  .hero-right-content {
+    text-align: center;
+    max-width: 100%; }
+  .hero-buttons {justify-content: center; }}
 .btn{padding:13px 21px;border-radius:8px;font-weight:750;display:inline-block;border:1px solid transparent}
 .btn-primary{background:white;color:var(--navy)}
 .btn-outline{border-color:rgba(255,255,255,.45);color:white}
@@ -861,16 +905,18 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
   
 <main>
 
-  <section class="hero" id="home">
- <div class="container hero-grid">
-  <div>
-   <h1>GeoHydro-Climate Lab</h1>
-   <div class="eyebrow">Department of Geology · Central University of South Bihar</div>
-    <p>Advancing geospatial science for water, climate, hazards and sustainable communities through interdisciplinary research, Earth observation and data-driven modelling.</p>
-   <div class="hero-buttons">
-    <a class="btn btn-primary" href="#research">Explore Research</a>
-    <a class="btn btn-outline" href="#contact">Connect with the Lab</a>
-   </div>
+  <!-- With this: -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-right-content">
+      <h1>GeoHydro-Climate Lab</h1>
+      <div class="eyebrow">Department of Geology · Central University of South Bihar</div>
+      <p>Advancing geospatial science for water, climate, hazards and sustainable communities through interdisciplinary research, Earth observation and data-driven modelling.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#research">Explore Research</a>
+        <a class="btn btn-outline" href="#contact">Connect with the Lab</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -880,7 +926,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
    <div class="section-head">
     <div class="kicker">About GHC</div>
     <h2>Welcome to the GeoHydro-Climate Lab.</h2>
-    <p>The GeoHydro-Climate Lab is an interdisciplinary research group at the intersection of geology, hydrology and climate science dedicated to investigating the complex relationships between the earth, water systems and climate focussing South Bihar region. The overarching goal of the GeoHydro-Climate lab is to observe, analyse, model and understand earth systems to identify pathways towards climate-resilient and sustainable resource management.</p>
+    <p>The GeoHydro-Climate Lab is an interdisciplinary research group at the intersection of geology, hydrology and climate science dedicated to investigating the complex relationships between the earth, water systems and climate focusing on South Bihar region. The overarching goal of the GeoHydro-Climate lab is to observe, analyse, model and understand earth systems to identify pathways towards climate-resilient and sustainable resource management.</p>
    </div>
    <div class="about-card">
     <h3>Our approach</h3>
@@ -1297,12 +1343,11 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
           <div class="scholar-name">Ishita</div>
           <div class="scholar-role">PhD Research Scholar</div>
           <div class="scholar-interests-label">Research Interests:</div>
-          <div class="scholar-interests-text">Surface–Groundwater interactions, Hydro-geochemistry, climate change</div>
+          <div class="scholar-interests-text">Hydro-geochemistry, Surface–Atmosphere interactions, climate change</div>
           <div class="scholar-links">
             <a href="mailto:ishita.singh8228@gmail.com" class="s-icon s-mail" title="Email">✉</a>
             <a href="#" target="_blank" class="s-icon s-scholar" title="Google Scholar">G</a>
             <a href="#" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
-            <a href="#" target="_blank" class="s-icon s-x" title="Twitter / X">🐦</a>
             <a href="#" target="_blank" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
           </div>
         </div>
