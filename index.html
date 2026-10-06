@@ -354,7 +354,7 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .about-card{background:white;border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
 .about-card h3{color:var(--navy);margin-bottom:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-  /* Lab Activities Slideshow */
+/* Lab Activities Slideshow (Matched to News & Gallery) */
 .slider-container {
   margin-top: 50px;
   position: relative;
@@ -362,48 +362,40 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--line);
-  background: #0b2233;
-}
-
+  background: #0b2233;}
 .slider-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
+  transition: transform 0.5s ease-in-out;}
 .slide {
   min-width: 100%;
   position: relative;
-  height: 460px;
-}
-
+  height: 480px;
+  cursor: pointer;}
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
+  transition: transform 0.3s ease;}
+.slide:hover img {
+  transform: scale(1.02);}
 .slide-caption {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 30px 35px 25px;
-  background: linear-gradient(to top, rgba(11, 34, 51, 0.9) 0%, rgba(11, 34, 51, 0.4) 60%, transparent 100%);
+  padding: 35px 35px 25px;
+  background: linear-gradient(to top, rgba(11, 34, 51, 0.92) 0%, rgba(11, 34, 51, 0.45) 60%, transparent 100%);
   color: #fff;
-}
-
+  pointer-events: none;}
 .slide-caption h4 {
-  font-size: 20px;
-  margin-bottom: 5px;
+  font-size: 21px;
   color: #fff;
-}
-
+  margin-bottom: 6px;}
 .slide-caption p {
   font-size: 13.5px;
   color: #d1e2e9;
-  max-width: 650px;
-}
+  max-width: 700px;}
 
 /* Slider Controls */
 .slider-btn {
@@ -944,72 +936,87 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
     <div class="slider-track" id="sliderTrack">
 
       <!-- Slide 1 -->
-      <div class="slide">
-        <img src="images/activity1.png" alt="Field Hydrological Investigation">
+      <div class="slide" onclick="openLightbox('images/activity1.png', 'Earth Day 2026 — Plantation drive on occasion of Earth Day.')">
+        <img src="images/activity1.png" alt="Earth Day 2026">
         <div class="slide-caption">
+          <span class="gallery-tag">Outreach & Environment</span>
           <h4>Earth Day 2026</h4>
-          <p>Plantation drive on ocassion of Earth Day.</p>
+          <p>Plantation drive on occasion of Earth Day.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
         </div>
       </div>
 
       <!-- Slide 2 -->
-      <div class="slide">
-        <img src="images/activity2.png" alt="Laboratory Analysis">
+      <div class="slide" onclick="openLightbox('images/activity2.png', 'Dissertation Students — M.Sc. Geology 2023-2025 dissertation Students with Supervisor.')">
+        <img src="images/activity2.png" alt="Dissertation Students">
         <div class="slide-caption">
+          <span class="gallery-tag">Mentorship & Research</span>
           <h4>Dissertation Students</h4>
           <p>M.Sc. Geology 2023-2025 dissertation Students with Supervisor.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
         </div>
       </div>
 
       <!-- Slide 3 -->
-      <div class="slide">
-        <img src="images/activity3.png" alt="GIS & Earth Observation Training">
+      <div class="slide" onclick="openLightbox('images/activity3.png', 'Winter school 2024 — Hands on training of Geospatial Technologies.')">
+        <img src="images/activity3.png" alt="Winter school 2024">
         <div class="slide-caption">
+          <span class="gallery-tag">Workshop & Training</span>
           <h4>Winter school 2024</h4>
           <p>Hands on training of Geospatial Technologies.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
         </div>
       </div>
 
       <!-- Slide 4 -->
-      <div class="slide">
-        <img src="images/activity4.png" alt="Workshops and Group Sessions">
+      <div class="slide" onclick="openLightbox('images/activity4.png', 'Lab Visit by domain Expert — Dr. Sansar Raj and Mr. B. D. Boogaard.')">
+        <img src="images/activity4.png" alt="Lab Visit">
         <div class="slide-caption">
+          <span class="gallery-tag">Academic Collaboration</span>
           <h4>Lab Visit by domain Expert</h4>
-          <p>Dr. Sansar Raj from  Department of Geosciences , University of Padova, Italy, along with Mr. B. D.Boogaard researcher from ITC, Netherlands.</p>
+          <p>Dr. Sansar Raj from Department of Geosciences, University of Padova, Italy, along with Mr. B. D. Boogaard researcher from ITC, Netherlands.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
         </div>
       </div>
+
       <!-- Slide 5 -->
-      <div class="slide">
-        <img src="images/activity5.png" alt="GIS & Earth Observation Training">
+      <div class="slide" onclick="openLightbox('images/activity5.png', 'Lifetime Achievement Award for Water resources to Prof. Prafull Singh By Arif Mohammad Khan.')">
+        <img src="images/activity5.png" alt="Lifetime Achievement Award">
         <div class="slide-caption">
+          <span class="gallery-tag">Milestones & Honors</span>
           <h4>Lifetime Achievement Award</h4>
-          <p>Lifetime Achievement Award for Water resources to Prof. Prafull Singh By Arif Mohammad Khan (Governor of Bihar)</p>
+          <p>Lifetime Achievement Award for Water resources to Prof. Prafull Singh By Arif Mohammad Khan (Governor of Bihar).</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
         </div>
       </div>
 
       <!-- Slide 6 -->
-      <div class="slide">
-        <img src="images/activity6.png" alt="Workshops and Group Sessions">
+      <div class="slide" onclick="openLightbox('images/activity6.png', 'Flag March on Earth Day 2025 — Inaugurated by Hon. VC K.N. Singh.')">
+        <img src="images/activity6.png" alt="Flag March on Earth Day 2025">
         <div class="slide-caption">
+          <span class="gallery-tag">Outreach & Awareness</span>
           <h4>Flag March on Earth Day 2025</h4>
-          <p>Inagurated by Hon. VC K.N. Singh On ocassion of Earth Day 2025.</p>
+          <p>Inaugurated by Hon. VC K.N. Singh on occasion of Earth Day 2025.</p>
+          <span class="gallery-hint">🔍 Click to enlarge photo</span>
         </div>
       </div>
+
     </div>
 
     <!-- Navigation Arrows -->
     <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">&#10094;</button>
     <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Slide">&#10095;</button>
 
-    <!-- Navigation Dots -->
+    <!-- Navigation Dots (6 dots matching all 6 slides) -->
     <div class="slider-dots" id="sliderDots">
       <button class="slider-dot active" onclick="jumpToSlide(0)"></button>
       <button class="slider-dot" onclick="jumpToSlide(1)"></button>
       <button class="slider-dot" onclick="jumpToSlide(2)"></button>
       <button class="slider-dot" onclick="jumpToSlide(3)"></button>
+      <button class="slider-dot" onclick="jumpToSlide(4)"></button>
+      <button class="slider-dot" onclick="jumpToSlide(5)"></button>
     </div>
   </div>
-
  </div>
 </section>
 
@@ -1720,7 +1727,6 @@ function resetGalleryAutoSlide() {
   startGalleryAutoSlide();
 }
 
-// Lightbox Modal Functions
 function openLightbox(imageSrc, captionText) {
   const modal = document.getElementById('galleryModal');
   const modalImg = document.getElementById('modalImg');
@@ -1729,23 +1735,23 @@ function openLightbox(imageSrc, captionText) {
   modalImg.src = imageSrc;
   modalCaption.textContent = captionText;
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Prevents background scroll
+  document.body.style.overflow = 'hidden';
+  
+  // Pause sliders while viewing modal
+  clearInterval(slideInterval);
+  clearInterval(galleryInterval);
 }
 
 function closeLightbox(e) {
   if (e) e.stopPropagation();
   const modal = document.getElementById('galleryModal');
   modal.classList.remove('active');
-  document.body.style.overflow = ''; // Restores scroll
+  document.body.style.overflow = '';
+  
+  // Resume sliders
+  startAutoSlide();
+  startGalleryAutoSlide();
 }
-
-// Close lightbox on 'Escape' key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeLightbox();
-  }
-});
-
 // Initialize Gallery slider
 startGalleryAutoSlide();
 </script>
