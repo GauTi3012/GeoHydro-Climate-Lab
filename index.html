@@ -14,16 +14,16 @@
 html{scroll-behavior:smooth}
 body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
 a{text-decoration:none;color:inherit}
-.container{width:min(1160px,92%);margin:auto}
+.container{width:min(1280px,95%);margin:auto}
 .navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 /* Navbar layout with brand on left/center and navlinks on far right */
 .nav-inner {
-  min-height: 110px;
-  padding: 10px 0;
+  min-height: 95px;
+  padding: 8px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;}
+  gap: 15px;}
 /* Brand cluster */
 .brand {
   display: flex;
@@ -32,14 +32,14 @@ a{text-decoration:none;color:inherit}
   text-decoration: none;}
 /* Further Enlarged Logos */
 .ghc-logo {
-  width: 95px;
-  height: 95px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   flex-shrink: 0;
   transition: transform 0.2s ease;}
 .cusb-logo {
-  width: 95px;
-  height: 95px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   margin-left: 0;
   padding-left: 0;
@@ -57,7 +57,7 @@ a{text-decoration:none;color:inherit}
   align-items: flex-start;
   line-height: 1.2;}
 .brand-text strong {
-  font-size: 26px;
+  font-size: 23px;
   font-weight: 850;
   letter-spacing: -0.5px;
   color: var(--navy);
@@ -73,11 +73,12 @@ a{text-decoration:none;color:inherit}
 /* Nav links pulled right */
 .navlinks {
   display: flex;
-  gap: 22px;
-  font-size: 14.5px;
+  gap: 15px;
+  font-size: 14px;
   font-weight: 700;
-  margin-left: auto; /* Pushes navigation all the way to the right */
-  align-items: center;}
+  margin-left: auto;
+  align-items: center;
+  flex-shrink: 0;}
 .navlinks a {
   color: var(--ink);
   transition: color 0.2s ease;
@@ -85,11 +86,15 @@ a{text-decoration:none;color:inherit}
 .navlinks a:hover {
   color: var(--teal);}
 /* Responsive adjustments */
-@media(max-width: 1100px) {
-  .ghc-logo, .cusb-logo { width: 75px; height: 75px; }
-  .brand-text strong { font-size: 22px; }
-  .brand-text small { font-size: 11.5px; }
-  .navlinks { gap: 14px; font-size: 13px; }}
+@media(max-width: 1200px) {
+  .ghc-logo, .cusb-logo { width: 68px; height: 68px; }
+  .brand-text strong { font-size: 20px; }
+  .brand-text small { font-size: 11px; }
+  .navlinks { gap: 11px; font-size: 13px; }}
+
+@media(max-width: 1020px) {
+  .navlinks { display: none; }
+  .menu { display: block; margin-left: auto; }}
 @media(max-width: 900px) {
   .navlinks { display: none; }
   .menu { display: block; margin-left: auto; }
@@ -256,11 +261,11 @@ a{text-decoration:none;color:inherit}
 /* Hero aligned to the right side */
 .hero-grid {
   position: relative;
-  min-height: 620px;
+  min-height: 480px;
   display: flex;
   justify-content: flex-end; /* Pushes content container to the right */
   align-items: center;
-  padding: 60px 0;}
+  padding: 35px 0;}
 .hero-right-content {
   max-width: 680px;
   text-align: right; /* Aligns all text inside to the right */
@@ -309,9 +314,9 @@ linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.02));position:rel
 radial-gradient(circle at 35% 30%,#70b9a0,#1c7380 48%,#123c59 78%);box-shadow:0 0 50px rgba(92,222,201,.22)}
 .earth:after{content:"";position:absolute;inset:18px;border-radius:50%;background:linear-gradient(35deg,transparent 35%,rgba(188,211,143,.35) 36% 48%,transparent 49% 62%,rgba(201,219,151,.3) 63% 72%,transparent 73%)}
 .satellite{position:absolute;right:35px;top:50px;font-size:42px;transform:rotate(-12deg)}
-.section{padding:95px 0}
+.section{padding:50px 0}
 .section.alt{background:var(--light)}
-.section-head{max-width:700px;margin-bottom:45px}
+.section-head{max-width:700px;margin-bottom:28px}
 .kicker{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:1.6px;font-size:12px}
 h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 0 13px}
 .section-head p{color:var(--muted)}
@@ -320,7 +325,7 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .about-card h3{color:var(--navy);margin-bottom:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
 /* Lab Activities Slideshow (Matched to News & Gallery) */
-.slider-container {margin-top: 50px; position: relative; border-radius: 20px;
+.slider-container {margin-top: 30px; position: relative; border-radius: 20px;
   overflow: hidden; box-shadow: var(--shadow);border: 1px solid var(--line);background: #0b2233;}
 .slider-track {display: flex; transition: transform 0.5s ease-in-out;}
 .slide { min-width: 100%; position: relative; height: 480px; cursor: pointer;}
@@ -530,7 +535,7 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .contact {
   background: var(--navy);
   color: white;
-  padding: 85px 0 95px;}
+  padding: 55px 0 60px;}
 .contact-header {
   margin-bottom: 45px;}
 .contact-header h2 {
@@ -630,7 +635,7 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
  .navlinks{display:none}.menu{display:block}.nav-inner{height:68px}
  .hero-grid{grid-template-columns:1fr;min-height:auto;padding:85px 0}.hero-visual{height:310px}
  .research-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}.people{grid-template-columns:1fr}
- .about-grid,.contact-grid{grid-template-columns:1fr}.section{padding:70px 0}}
+ .about-grid,.contact-grid{grid-template-columns:1fr}.section{padding:40px 0}}
 @media(max-width:560px){
  h1{font-size:43px}.hero p{font-size:16px}.research-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}
  .brand{font-size:13px}.brand small{font-size:9px}
