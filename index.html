@@ -9,8 +9,7 @@
 :root{
   --navy:#12304a; --blue:#176b87; --teal:#278b83; --earth:#b87333;
   --ink:#19303d; --muted:#647784; --light:#f4f8fa; --white:#fff;
-  --line:#dbe6eb; --shadow:0 12px 35px rgba(18,48,74,.10);
-}
+  --line:#dbe6eb; --shadow:0 12px 35px rgba(18,48,74,.10);}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
@@ -117,33 +116,23 @@ a{text-decoration:none;color:inherit}
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--line);
-  background: #0b2233;
-}
-
+  background: #0b2233;}
 .gallery-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
+  transition: transform 0.5s ease-in-out;}
 .gallery-slide {
   min-width: 100%;
   position: relative;
   height: 480px;
-  cursor: pointer;
-}
-
+  cursor: pointer;}
 .gallery-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
-}
-
+  transition: transform 0.3s ease;}
 .gallery-slide:hover img {
-  transform: scale(1.02);
-}
-
+  transform: scale(1.02);}
 .gallery-caption {
   position: absolute;
   bottom: 0;
@@ -152,9 +141,7 @@ a{text-decoration:none;color:inherit}
   padding: 35px 35px 25px;
   background: linear-gradient(to top, rgba(11, 34, 51, 0.92) 0%, rgba(11, 34, 51, 0.45) 60%, transparent 100%);
   color: #fff;
-  pointer-events: none;
-}
-
+  pointer-events: none;}
 .gallery-tag {
   display: inline-block;
   font-size: 11px;
@@ -165,28 +152,21 @@ a{text-decoration:none;color:inherit}
   background: rgba(39, 139, 131, 0.35);
   padding: 3px 10px;
   border-radius: 12px;
-  margin-bottom: 8px;
-}
-
+  margin-bottom: 8px;}
 .gallery-caption h3 {
   font-size: 21px;
   color: #fff;
-  margin-bottom: 6px;
-}
-
+  margin-bottom: 6px;}
 .gallery-caption p {
   font-size: 13.5px;
   color: #d1e2e9;
-  max-width: 700px;
-}
-
+  max-width: 700px;}
 .gallery-hint {
   display: inline-block;
   margin-top: 6px;
   font-size: 11.5px;
   color: #bfe8df;
-  font-weight: 600;
-}
+  font-weight: 600;}
 
 /* Full-Screen Lightbox Modal */
 .gallery-modal {
@@ -199,17 +179,13 @@ a{text-decoration:none;color:inherit}
   align-items: center;
   justify-content: center;
   padding: 30px;
-  animation: modalFadeIn 0.25s ease;
-}
-
+  animation: modalFadeIn 0.25s ease;}
 .gallery-modal.active {
-  display: flex;
-}
+  display: flex;}
 
 @keyframes modalFadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
-}
+  to { opacity: 1; }}
 
 .modal-content-wrap {
   position: relative;
@@ -217,26 +193,21 @@ a{text-decoration:none;color:inherit}
   max-height: 85vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
+  align-items: center;}
 .modal-image {
   max-width: 100%;
   max-height: 75vh;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
+  border: 1px solid rgba(255, 255, 255, 0.15);}
 .modal-caption-text {
   color: #e1f0f2;
   margin-top: 14px;
   font-size: 15px;
   text-align: center;
   max-width: 750px;
-  line-height: 1.4;
-}
+  line-height: 1.4;}
 
 /* Close Button (Top-Right Cross Mark) */
 .modal-close-btn {
@@ -255,20 +226,17 @@ a{text-decoration:none;color:inherit}
   place-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  z-index: 10000;
-}
-
+  z-index: 10000;}
 .modal-close-btn:hover {
   background: rgba(255, 255, 255, 0.35);
-  transform: scale(1.1);
-}
+  transform: scale(1.1);}
 
 @media(max-width: 768px) {
   .gallery-slide { height: 320px; }
   .gallery-caption h3 { font-size: 17px; }
   .gallery-caption p { font-size: 12px; }
-  .modal-close-btn { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 24px; }
-}
+  .modal-close-btn { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 24px; }}
+  
 .navlinks{display:flex;gap:25px;font-size:14px;font-weight:650}
 .navlinks a:hover{color:var(--teal)}
 .menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
@@ -299,15 +267,13 @@ a{text-decoration:none;color:inherit}
   margin-left: auto;}
 
 /* Single-line Hero Title */
-h1 {
-  font-size: clamp(34px, 4.2vw, 56px); /* Scaled so it fits on one line */
+h1 {font-size: clamp(34px, 4.2vw, 56px); /* Scaled so it fits on one line */
   line-height: 1.15;
   letter-spacing: -1px;
   margin-bottom: 12px;
   white-space: nowrap; /* Forces single line */
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);}
-.eyebrow {
-  font-size: 13px;
+.eyebrow { font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 800;
@@ -321,11 +287,10 @@ h1 {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
   margin-left: auto;}
 /* Buttons docked to the right */
-.hero-buttons {display: flex;gap: 14px;margin-top: 28px;flex-wrap: wrap;justify-content: flex-end; /* Right-align buttons */
-}
+.hero-buttons {display: flex;gap: 12px;margin-top: 28px;flex-wrap: wrap;justify-content: flex-end; /* Right-align buttons */}
 @media(max-width: 900px) {
   h1 {white-space: normal; /* Permits wrapping gracefully on smaller mobile viewports */
-    font-size: 38px;}
+    font-size: 30px;}
   .hero-grid {justify-content: center;}
   .hero-right-content {
     text-align: center;
@@ -355,107 +320,32 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .about-card h3{color:var(--navy);margin-bottom:12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
 /* Lab Activities Slideshow (Matched to News & Gallery) */
-.slider-container {
-  margin-top: 50px;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--line);
-  background: #0b2233;}
-.slider-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;}
-.slide {
-  min-width: 100%;
-  position: relative;
-  height: 480px;
-  cursor: pointer;}
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;}
-.slide:hover img {
-  transform: scale(1.02);}
-.slide-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 35px 35px 25px;
-  background: linear-gradient(to top, rgba(11, 34, 51, 0.92) 0%, rgba(11, 34, 51, 0.45) 60%, transparent 100%);
-  color: #fff;
-  pointer-events: none;}
-.slide-caption h4 {
-  font-size: 21px;
-  color: #fff;
-  margin-bottom: 6px;}
-.slide-caption p {
-  font-size: 13.5px;
-  color: #d1e2e9;
-  max-width: 700px;}
+.slider-container {margin-top: 50px; position: relative; border-radius: 20px;
+  overflow: hidden; box-shadow: var(--shadow);border: 1px solid var(--line);background: #0b2233;}
+.slider-track {display: flex; transition: transform 0.5s ease-in-out;}
+.slide { min-width: 100%; position: relative; height: 480px; cursor: pointer;}
+.slide img {width: 100%;height: 100%;object-fit: cover;display: block;transition: transform 0.3s ease;}
+.slide:hover img {transform: scale(1.02);}
+.slide-caption {position: absolute; bottom: 0;left: 0;right: 0;padding: 35px 35px 25px;background: linear-gradient(to top, rgba(11, 34, 51, 0.92) 0%, rgba(11, 34, 51, 0.45) 60%, transparent 100%);color: #fff;pointer-events: none;}
+.slide-caption h4 {font-size: 21px;color: #fff;margin-bottom: 6px;}
+.slide-caption p {font-size: 13.5px;color: #d1e2e9;max-width: 700px;}
 
 /* Slider Controls */
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
-  font-size: 18px;
-  color: var(--navy);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.25s ease;
-  z-index: 5;
-}
-
-.slider-btn:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.08);
-}
-
+.slider-btn {position: absolute;top: 50%;transform: translateY(-50%);width: 44px;height: 44px;border-radius: 50%;background: rgba(255, 255, 255, 0.85);
+  border: none;font-size: 18px;color: var(--navy);cursor: pointer;display: flex;align-items: center;justify-content: center;transition: all 0.25s ease;
+  z-index: 5;}
+.slider-btn:hover {background: #fff;transform: translateY(-50%) scale(1.08);}
 .slider-btn.prev { left: 18px; }
 .slider-btn.next { right: 18px; }
 
 /* Dot Indicators */
-.slider-dots {
-  position: absolute;
-  bottom: 12px;
-  right: 25px;
-  display: flex;
-  gap: 8px;
-  z-index: 6;
-}
-
-.slider-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.slider-dot.active {
-  background: var(--teal);
-  width: 22px;
-  border-radius: 12px;
-}
-
+.slider-dots {position: absolute;bottom: 12px;right: 25px;display: flex;gap: 8px;z-index: 6;}
+.slider-dot {width: 9px; height: 9px;border-radius: 50%;background: rgba(255, 255, 255, 0.4);border: none;cursor: pointer;transition: all 0.25s ease;}
+.slider-dot.active {background: var(--teal);width: 22px; border-radius: 12px;}
 @media(max-width: 768px) {
   .slide { height: 320px; }
   .slide-caption h4 { font-size: 16px; }
-  .slide-caption p { font-size: 12px; }
-}
+  .slide-caption p { font-size: 12px; }}
 .stat{padding:20px;background:var(--light);border-radius:12px;text-align:center}
 .stat strong{display:block;font-size:25px;color:var(--teal)}
 .stat span{font-size:12px;color:var(--muted)}
@@ -482,127 +372,24 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
   </nav>
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   /* Publications Grid & Cards */
-.publications-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
-}
-
-.pub-card {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 4px 18px rgba(18, 48, 74, 0.05);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.pub-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-
-.pub-cover-wrap {
-  width: 100%;
-  height: 200px;
-  background: #edf3f5;
-  overflow: hidden;
-  border-bottom: 1px solid var(--line);
-}
-
-.pub-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.3s ease;
-}
-
-.pub-card:hover .pub-cover {
-  transform: scale(1.03);
-}
-
-.pub-body {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.pub-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--teal);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin-bottom: 8px;
-}
-
-.pub-meta .pub-date {
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.pub-title {
-  font-size: 17px;
-  font-weight: 750;
-  line-height: 1.35;
-  color: var(--navy);
-  margin-bottom: 10px;
-}
-
-.pub-title a:hover {
-  color: var(--teal);
-}
-
-.pub-authors {
-  font-size: 13.5px;
-  color: #4b5d68;
-  line-height: 1.45;
-  margin-top: auto;
-  padding-top: 10px;
-}
-
-.pub-authors strong {
-  color: var(--navy);
-}
-
-.pub-actions {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.pub-journal-tag {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--blue);
-  background: #ebf3f7;
-  padding: 3px 9px;
-  border-radius: 6px;
-}
-
-.pub-link-btn {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--teal);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.pub-link-btn:hover {
-  text-decoration: underline;
-}
+.publications-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 25px;}
+.pub-card {background: white;border: 1px solid var(--line);border-radius: 18px;overflow: hidden;box-shadow: 0 4px 18px rgba(18, 48, 74, 0.05);display: flex;
+  flex-direction: column;transition: transform 0.25s ease, box-shadow 0.25s ease;}
+.pub-card:hover {transform: translateY(-4px);box-shadow: var(--shadow);}
+.pub-cover-wrap {width: 100%;height: 200px;background: #edf3f5;overflow: hidden;border-bottom: 1px solid var(--line);}
+.pub-cover {width: 100%;height: 100%;object-fit: cover;object-position: top center;transition: transform 0.3s ease;}
+.pub-card:hover .pub-cover { transform: scale(1.03);}
+.pub-body {padding: 22px; display: flex; flex-direction: column;flex-grow: 1;}
+.pub-meta {display: flex;align-items: center;gap: 10px;font-size: 12px;font-weight: 700;color: var(--teal);text-transform: uppercase;letter-spacing: 0.8px;margin-bottom: 8px;}
+.pub-meta .pub-date {color: var(--muted);font-weight: 600;}
+.pub-title {font-size: 17px;font-weight: 750;line-height: 1.35;color: var(--navy);margin-bottom: 10px;}
+.pub-title a:hover {color: var(--teal);}
+.pub-authors {font-size: 13.5px;color: #4b5d68;line-height: 1.45;margin-top: auto;padding-top: 10px;}
+.pub-authors strong {color: var(--navy);}
+.pub-actions {margin-top: 14px;padding-top: 12px;border-top: 1px dashed var(--line);display: flex;align-items: center;justify-content: space-between;}
+.pub-journal-tag {font-size: 12px; font-weight: 600; color: var(--blue);background: #ebf3f7;padding: 3px 9px;border-radius: 6px;}
+.pub-link-btn {font-size: 12px;font-weight: 700;color: var(--teal);text-decoration: none;display: inline-flex;align-items: center;gap: 4px;}
+.pub-link-btn:hover {text-decoration: underline;}
 .person{border:1px solid var(--line);border-radius:18px;padding:28px;background:white;text-align:center}
 .scholar-link {display: inline-flex;
   align-items: center;
@@ -630,30 +417,16 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .toggle-btn.active .arrow {
   transform: rotate(180deg);}
 
-/* Expandable Members Container */
+/* Permanent Scholars Container */
 .members-drawer {
-  display: none;
+  display: block;
   width: 100%;
   margin-top: 40px;
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 40px 35px;
-  box-shadow: var(--shadow);
-  animation: fadeIn 0.35s ease;}
-.members-drawer.open {
-  display: block;}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }}
-
-.members-drawer h3.drawer-title {
-  text-align: center;
-  color: var(--navy);
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 35px;}
-
+  box-shadow: var(--shadow);}
 /* 2-Column Members Grid matching the reference layout */
 .scholars-grid {
   display: grid;
@@ -711,12 +484,8 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
   font-weight: bold;
   color: white;
   text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.s-icon:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
+  transition: transform 0.2s ease, opacity 0.2s ease;}
+.s-icon:hover { transform: translateY(-2px); opacity: 0.9;}
 .s-mail { background: #1389e6; }
 .s-scholar { background: #4285f4; }
 .s-linkedin { background: #0077b5; }
@@ -726,9 +495,7 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 
 @media(max-width: 768px) {
   .scholars-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    grid-template-columns: 1fr; }}
 .avatar{width:95px;height:95px;margin:0 auto 15px;border-radius:50%;object-fit:cover;display:block;border:3px solid #d9eceb;box-shadow:0 4px 12px rgba(18,48,74,.08);}
 .person h3{color:var(--navy);font-size:18px}.person p{font-size:13px;color:var(--muted)}
 .timeline{border-left:2px solid #cfe1e4;margin-left:10px;padding-left:28px;display:grid;gap:25px}
@@ -838,31 +605,22 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
  .navlinks{display:none}.menu{display:block}.nav-inner{height:68px}
  .hero-grid{grid-template-columns:1fr;min-height:auto;padding:85px 0}.hero-visual{height:310px}
  .research-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}.people{grid-template-columns:1fr}
- .about-grid,.contact-grid{grid-template-columns:1fr}.section{padding:70px 0}
-}
+ .about-grid,.contact-grid{grid-template-columns:1fr}.section{padding:70px 0}}
 @media(max-width:560px){
  h1{font-size:43px}.hero p{font-size:16px}.research-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}
  .brand{font-size:13px}.brand small{font-size:9px}
   .ghc-logo{
     width:42px;
-    height:42px;
-}
-
+    height:42px;}
 .cusb-logo{
     width:44px;
     height:44px;
     margin-left:6px;
-    padding-left:6px;
-}
-
+    padding-left:6px;}
 .brand-text strong{
-    font-size:14px;
-}
-
+    font-size:14px;}
 .brand-text small{
-    font-size:8px;
-}
-}
+    font-size:8px;}}
 </style>
 </head>
 <body>
@@ -1406,43 +1164,31 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
     <p>GHC Lab supports collaborative research, doctoral work, student projects and hands-on geospatial learning.</p>
   </div>
 
-  <!-- Card 1: PI -->
-   <div class="person">
-     <img src="images/pks2.png" alt="Prof. Prafull Kumar Singh" class="avatar">
-     <h3>Prof. Prafull Kumar Singh</h3>
-     <p>Department of Geology (HEAD)<br></p>
-     
-     <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
-       <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" target="_blank" rel="noopener noreferrer" class="scholar-link" style="margin-top: 0;">
-         🎓 Google Scholar
-       </a>
-       <a href="mailto:prafullsingh@cusb.ac.in" class="s-icon s-mail" title="Email">✉</a>
-       <a href="https://www.linkedin.com/in/prof-prafull-kumar-singh-35748b8/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
-       <a href="https://www.scopus.com/authid/detail.uri?authorId=54394070900" target="_blank" class="s-icon s-sc" title="SCOPUS">SC</a>
-       <a href="https://www.researchgate.net/profile/Prof-Singh-7" target="_blank" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
-     </div>
-   </div>
+  <!-- Principal Investigator -->
+  <div class="person" style="max-width: 480px; margin: 0 auto 30px;">
+    <img src="images/pks1.png" alt="Prof. (Dr.) Prafull Kumar Singh" class="avatar">
+    <h3>Prof. Prafull Kumar Singh</h3>
+    <p>Department of Geology<br></p>
+    
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+      <a href="https://scholar.google.com/citations?user=OedZhWUAAAAJ" target="_blank" rel="noopener noreferrer" class="scholar-link" style="margin-top: 0;">
+        🎓 Google Scholar
+      </a>
+      <a href="mailto:prafullsingh@cusb.ac.in" class="s-icon s-mail" title="Email">✉</a>
+      <a href="https://www.linkedin.com/in/prof-prafull-kumar-singh-35748b8/" target="_blank" class="s-icon s-linkedin" title="LinkedIn">in</a>
+      <a href="https://www.scopus.com/authid/detail.uri?authorId=54394070900" target="_blank" class="s-icon s-sc" title="SCOPUS">SC</a>
+      <a href="https://www.researchgate.net/profile/Prof-Singh-7" target="_blank" class="s-icon s-rg" title="ResearchGate">R<sup>G</sup></a>
+    </div>
+  </div>
 
-   <!-- Card 2: Research Scholars with Dropdown -->
-   <div class="person">
-     <img src="images/phd-team.png" alt="Research Scholars" class="avatar">
-     <h3>Research Scholars</h3>
-     <button class="toggle-btn" id="scholarsToggle" onclick="toggleScholars()">
-       <span>View Scholars</span>
-       <span class="arrow">▼</span>
-     </button>
-   </div>
-
-  
-
-  <!-- Expandable Dropdown Container (Matches Screenshot Layout) -->
-  <div class="members-drawer" id="scholarsDrawer">
-    <h3 class="drawer-title">Doctoral Members</h3>
+  <!-- Permanent Members Grid -->
+  <div class="members-drawer">
+    <h3 class="drawer-title">Doctoral Members & Researchers</h3>
     <div class="scholars-grid">
 
-      <!-- Member 1 -->
+      <!-- Bibhukalyan Mohapatra -->
       <div class="scholar-profile">
-        <img src="images/scholar1.png" alt="Scholar 1" class="scholar-photo">
+        <img src="images/scholar1.png" alt="Bibhukalyan Mohapatra" class="scholar-photo">
         <div class="scholar-info">
           <div class="scholar-name">Bibhukalyan Mohapatra</div>
           <div class="scholar-role">PhD Research Scholar</div>
@@ -1458,9 +1204,9 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
         </div>
       </div>
 
-      <!-- Member 2 -->
+      <!-- Suman Kumar -->
       <div class="scholar-profile">
-        <img src="images/scholar2.png" alt="Scholar 2" class="scholar-photo">
+        <img src="images/scholar2.png" alt="Suman Kumar" class="scholar-photo">
         <div class="scholar-info">
           <div class="scholar-name">Suman Kumar</div>
           <div class="scholar-role">PhD Research Scholar (Project Associate)</div>
@@ -1476,9 +1222,9 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
         </div>
       </div>
 
-      <!-- Member 3 -->
+      <!-- Ankit Kumar -->
       <div class="scholar-profile">
-        <img src="images/scholar3.png" alt="Scholar 3" class="scholar-photo">
+        <img src="images/scholar3.png" alt="Ankit Kumar" class="scholar-photo">
         <div class="scholar-info">
           <div class="scholar-name">Ankit Kumar</div>
           <div class="scholar-role">PhD Research Scholar</div>
@@ -1494,9 +1240,9 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
         </div>
       </div>
 
-      <!-- Member 4 -->
+      <!-- Ishita -->
       <div class="scholar-profile">
-        <img src="images/scholar4.png" alt="Scholar 4" class="scholar-photo">
+        <img src="images/scholar4.png" alt="Ishita" class="scholar-photo">
         <div class="scholar-info">
           <div class="scholar-name">Ishita</div>
           <div class="scholar-role">PhD Research Scholar</div>
@@ -1511,9 +1257,9 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
         </div>
       </div>
       
-      <!-- Member 5 -->
+      <!-- Gautam Kumar -->
       <div class="scholar-profile">
-        <img src="images/scholar5.png" alt="Scholar 5" class="scholar-photo">
+        <img src="images/scholar5.png" alt="Gautam Kumar" class="scholar-photo">
         <div class="scholar-info">
           <div class="scholar-name">Gautam Kumar</div>
           <div class="scholar-role">Project Associate</div>
@@ -1529,11 +1275,11 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
         </div>
       </div>
 
-
     </div>
   </div>
  </div>
 </section>
+  
 <section class="section" id="activities">
  <div class="container">
   <div class="section-head"><div class="kicker">Lab Facilities and Equipments</div><h2>Research beyond the desk.</h2></div>
@@ -1628,28 +1374,6 @@ menu.addEventListener('click', () => {
   nav.style.borderRadius = '12px';
 });
 
-// Research Scholars dropdown toggle
-function toggleScholars() {
-  const drawer = document.getElementById('scholarsDrawer');
-  const btn = document.getElementById('scholarsToggle');
-  
-  if (!drawer || !btn) return;
-
-  const isOpen = drawer.classList.toggle('open');
-  btn.classList.toggle('active');
-
-  const textSpan = btn.querySelector('span:first-child');
-  const arrowSpan = btn.querySelector('.arrow');
-
-  if (isOpen) {
-    if (textSpan) textSpan.textContent = 'Hide Scholars';
-    if (arrowSpan) arrowSpan.textContent = '▲';
-    drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  } else {
-    if (textSpan) textSpan.textContent = 'View Scholars';
-    if (arrowSpan) arrowSpan.textContent = '▼';
-  }
-}
   let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const track = document.getElementById('sliderTrack');
