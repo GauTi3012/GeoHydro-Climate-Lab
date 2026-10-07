@@ -390,6 +390,31 @@ h2{font-size:clamp(30px,4vw,44px);line-height:1.12;color:var(--navy);margin:9px 
 .pub-journal-tag {font-size: 12px; font-weight: 600; color: var(--blue);background: #ebf3f7;padding: 3px 9px;border-radius: 6px;}
 .pub-link-btn {font-size: 12px;font-weight: 700;color: var(--teal);text-decoration: none;display: inline-flex;align-items: center;gap: 4px;}
 .pub-link-btn:hover {text-decoration: underline;}
+  /* "View More" Card in the 6th slot */
+.view-more-card {background: linear-gradient(145deg, #12304a, #176b87);border: 1px solid var(--blue);border-radius: 18px; color: #ffffff;display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;padding: 35px 25px;min-height: 380px;cursor: pointer;transition: transform 0.25s ease, box-shadow 0.25s ease;box-shadow: 0 4px 18px rgba(18, 48, 74, 0.1);}
+.view-more-card:hover {transform: translateY(-4px);box-shadow: var(--shadow);background: linear-gradient(145deg, #0e273c, #1f7895);}
+.view-more-card .vm-icon {font-size: 42px;margin-bottom: 15px;}
+.view-more-card h3 {font-size: 22px;color: #ffffff;font-weight: 800;margin-bottom: 8px;}
+.view-more-card p {font-size: 13.5px;color: #cfe5ec;max-width: 260px;margin-bottom: 18px;}
+.view-more-btn {display: inline-flex;align-items: center;gap: 8px;background: var(--teal);color: #fff;font-size: 13px;font-weight: 700;padding: 10px 20px;border-radius: 25px;border: none;cursor: pointer;transition: all 0.2s ease;}
+.view-more-btn:hover {background: #20746d;}
+/* Slide-out Archive Table Container */
+.archive-table-wrap {display: none;width: 100%;margin-top: 35px;background: #ffffff;border: 1px solid var(--line);border-radius: 18px;padding: 28px 24px;box-shadow: var(--shadow);animation: fadeIn 0.3s ease;}
+.archive-table-wrap.open {display: block;}
+.archive-header {display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;padding-bottom: 14px;border-bottom: 1px solid var(--line);}
+.archive-header h3 {color: var(--navy);font-size: 20px;font-weight: 800;}
+.archive-close-btn {background: none;border: 1px solid var(--line);padding: 6px 14px;border-radius: 20px;font-size: 12px;font-weight: 700;color: var(--navy);cursor: pointer;}
+.archive-close-btn:hover {background: var(--light);}
+/* Responsive Table */
+.pub-table-responsive {width: 100%;overflow-x: auto;}
+.pub-table {width: 100%;border-collapse: collapse;text-align: left;font-size: 13.5px;}
+.pub-table th {background: #edf3f5;color: var(--navy);font-weight: 750;padding: 12px 14px;border-bottom: 2px solid var(--line);white-space: nowrap;}
+.pub-table td {padding: 14px;border-bottom: 1px solid var(--line);vertical-align: top;color: #3f515c;}
+.pub-table tr:hover td {background: #fbfdfe;}
+.pub-table .t-title {color: var(--navy);font-weight: 700;}
+.pub-table .t-journal {color: var(--blue);font-weight: 600;white-space: nowrap;}
+.pub-table .t-link {color: var(--teal);font-weight: 700;white-space: nowrap;}
+  
 .person{border:1px solid var(--line);border-radius:18px;padding:28px;background:white;text-align:center}
 .scholar-link {display: inline-flex;
   align-items: center;
@@ -811,142 +836,35 @@ footer{background:#0b2233;color:#9fb4bf;padding:25px 0;font-size:13px}
    <p>Peer-reviewed articles, journal publications, and scientific contributions from the GeoHydro-Climate Lab.</p>
   </div>
 
-  <div class="publications-grid">
+  <!-- JavaScript will inject cards 1 to 5 and the 6th View More card here -->
+  <div class="publications-grid" id="publicationsGrid"></div>
 
-   <!-- Paper 1 -->
-   <article class="pub-card">
-    <div class="pub-cover-wrap">
-     <img src="images/paper1.png" alt="Front page of paper 1" class="pub-cover">
+  <!-- The table that opens when View More is clicked -->
+  <div class="archive-table-wrap" id="archiveTableContainer">
+    <div class="archive-header">
+      <h3>All Laboratory Publications</h3>
+      <button class="archive-close-btn" type="button" onclick="togglePublicationTable()">Close Table ✕</button>
     </div>
-    <div class="pub-body">
-     <div class="pub-meta">
-      <span>Article</span> • <span class="pub-date">August 2026</span>
-     </div>
-     <h3 class="pub-title">
-      <a href="https://doi.org/10.1038/s41598-026-68023-6" target="_blank" rel="noopener noreferrer">
-       Assessment of drought dynamics in the phalgu river basin, middle ganga plain, based on CHIRPS and MODIS- derived indices
-      </a>
-     </h3>
-     <p class="pub-authors">
-      <strong>Authors:</strong> Bibhukalyan Mohapatra, Prafull Kumar Singh
-     </p>
-     <div class="pub-actions">
-      <span class="pub-journal-tag">Scientific Reports</span>
-      <a href="https://doi.org/10.1038/s41598-026-68023-6" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-       View Article ↗
-      </a>
-     </div>
+    <div class="pub-table-responsive">
+      <table class="pub-table">
+        <thead>
+          <tr>
+            <th style="width: 50px;">#</th>
+            <th style="width: 115px;">Date</th>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Journal</th>
+            <th style="width: 80px;">Link</th>
+          </tr>
+        </thead>
+        <tbody id="archiveTableBody"></tbody>
+      </table>
     </div>
-   </article>
-
-     <!-- Paper 2 -->
-   <article class="pub-card">
-    <div class="pub-cover-wrap">
-     <img src="images/paper2.png" alt="Front page of paper 2" class="pub-cover">
-    </div>
-    <div class="pub-body">
-     <div class="pub-meta">
-      <span>Article</span> • <span class="pub-date">April 2026</span>
-     </div>
-     <h3 class="pub-title">
-      <a href="https://doi.org/10.1007/s43538-026-00775-1" target="_blank" rel="noopener noreferrer">
-      Leveraging Google Earth Engine for groundwater sustainability underchanging climatic conditions
-      </a>
-     </h3>
-     <p class="pub-authors">
-      <strong>Authors:</strong> Suman Kumar, Prafull Kumar Singh
-     </p>
-     <div class="pub-actions">
-      <span class="pub-journal-tag">Proceedings of the Indian National Science Academy</span>
-      <a href="https://doi.org/10.1007/s43538-026-00775-1" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-       View Article ↗
-      </a>
-     </div>
-    </div>
-   </article>
-
-<!-- Paper 3 -->
-   <article class="pub-card">
-    <div class="pub-cover-wrap">
-     <img src="images/paper3.png" alt="Front page of paper 3" class="pub-cover">
-    </div>
-    <div class="pub-body">
-     <div class="pub-meta">
-      <span>Article</span> • <span class="pub-date">January 2026</span>
-     </div>
-     <h3 class="pub-title">
-      <a href="https://doi.org/10.1007/s41324-025-00657-6" target="_blank" rel="noopener noreferrer">
-       PCA-WSA based hybrid modeling approach for sub-watershedprioritization of Phalgu River Basin, Middle Ganga Plain, India
-      </a>
-     </h3>
-     <p class="pub-authors">
-      <strong>Authors:</strong> Bibhukalyan Mohapatra, Prafull Kumar Singh
-     </p>
-     <div class="pub-actions">
-      <span class="pub-journal-tag">Spatial Information Research</span>
-      <a href="https://doi.org/10.1007/s41324-025-00657-6" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-       View Article ↗
-      </a>
-     </div>
-    </div>
-   </article>
-    
- <!-- Paper 4 -->
-   <article class="pub-card">
-    <div class="pub-cover-wrap">
-     <img src="images/paper4.png" alt="Front page of paper 4" class="pub-cover">
-    </div>
-    <div class="pub-body">
-     <div class="pub-meta">
-      <span>Article</span> • <span class="pub-date">September 2025</span>
-     </div>
-     <h3 class="pub-title">
-      <a href="https://doi.org/10.1007/s43538-025-00523-x" target="_blank" rel="noopener noreferrer">
-      Flood risk assessment of Aurangabad, Middle Ganga plan, using geospatial data
-      </a>
-     </h3>
-     <p class="pub-authors">
-      <strong>Authors:</strong> Sumo Ranjan Mandal, Ankit Kumar, Prafull Kumar Singh
-     </p>
-     <div class="pub-actions">
-      <span class="pub-journal-tag">Proceedings of the Indian National Science Academy</span>
-      <a href="https://doi.org/10.1007/s43538-025-00523-x" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-       View Article ↗
-      </a>
-     </div>
-    </div>
-   </article>
-
-    <!-- Paper 5 -->
-   <article class="pub-card">
-    <div class="pub-cover-wrap">
-     <img src="images/paper5.png" alt="Front page of paper 5" class="pub-cover">
-    </div>
-    <div class="pub-body">
-     <div class="pub-meta">
-      <span>Article</span> • <span class="pub-date">December 2024</span>
-     </div>
-     <h3 class="pub-title">
-      <a href="https://doi.org/10.1002/nsg.12328" target="_blank" rel="noopener noreferrer">
-      Determining shallow S-Wave velocity structure and site response parameters in Gwalior basin, Central India, through microtremor measurements
-      </a>
-     </h3>
-     <p class="pub-authors">
-      <strong>Authors:</strong> Akash Rajput, Ajay Pratap Singh, S.K.Pal, Prafull Singh
-     </p>
-     <div class="pub-actions">
-      <span class="pub-journal-tag">Near Surface Geophysics</span>
-      <a href="https://doi.org/10.1002/nsg.12328" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
-       View Article ↗
-      </a>
-     </div>
-    </div>
-   </article>
-    
   </div>
+
  </div>
 </section>
-
+  
   <!-- News & Gallery Section -->
 <section class="section" id="gallery">
  <div class="container">
@@ -1479,4 +1397,210 @@ function closeLightbox(e) {
 }
 // Initialize Gallery slider
 startGalleryAutoSlide();
+  
+  // Master publication list (always keep newest at index 0)
+const allPublications = [
+  {title: "Assessment of drought dynamics in the phalgu river basin, middle ganga plain, based on CHIRPS and MODIS- derived indices",
+    authors: "Bibhukalyan Mohapatra, Prafull Kumar Singh",
+    journal: "Scientific Reports",
+    date: "August 2026",
+    doi: "https://doi.org/10.1038/s41598-026-68023-6",
+    image: "images/paper1.png"},
+  {title: "Leveraging Google Earth Engine for groundwater sustainability underchanging climatic conditions",
+    authors: "Suman Kumar, Prafull Kumar Singh",
+    journal: "Proceedings of the Indian National Science Academy",
+    date: "April 2026",
+    doi: "https://doi.org/10.1007/s43538-026-00775-1",
+    image: "images/paper2.png"},
+  {title: "PCA-WSA based hybrid modeling approach for sub-watershedprioritization of Phalgu River Basin, Middle Ganga Plain, India",
+    authors: "Bibhukalyan Mohapatra, Prafull Kumar Singh",
+    journal: "Spatial Information Research",
+    date: "January 2026",
+    doi: "https://doi.org/10.1007/s41324-025-00657-6",
+    image: "images/paper3.png"},
+  {title: "Flood risk assessment of Aurangabad, Middle Ganga plan, using geospatial data",
+    authors: "Sumo Ranjan Mandal, Ankit Kumar, Prafull Kumar Singh",
+    journal: "Proceedings of the Indian National Science Academy",
+    date: "September 2025",
+    doi: "https://doi.org/10.1007/s43538-025-00523-x",
+    image: "images/paper4.png"},
+  {title: "Determining shallow S-Wave velocity structure and site response parameters in Gwalior basin, Central India, through microtremor measurements",
+    authors: "Akash Rajput, Ajay Pratap Singh, S.K.Pal, Prafull Singh",
+    journal: "Near Surface Geophysics",
+    date: "December 2024",
+    doi: "https://doi.org/10.1002/nsg.12328",
+    image: "images/paper5.png"},
+  {title: "Confirmation of Nature of Palaeo-course of Assi River, India: Some Significant Revelations from Electrical Resistivity Tomography. ",
+    authors: "Mallikarjun Mishra, Sanjay Rana, P.K Rai, Prafull Singh",
+    journal: "Journal of the Geological Society of India",
+    date: "2024",
+    doi: "https://doi.org/10.17491/jgsi/2024/174045",
+    image: "images/paper6.png"}
+  {title: "A Note on Spectacular Geodiversity and Cultural Sites in and Around Gaya-Rajgir Region of Bihar, India: Prospect for Geoheritage and Geotourism.",
+    authors: "K.M. Kumar Sharma, S Ranabir, N. A Singh, Prafull Singh",
+    journal: "Geoheritage",
+    date: "2024",
+    doi: "https://doi.org/10.1007/s12371-024-00994-2",
+    image: "images/paper7.png"},
+  {title: "Geospatial Technology in Groundwater Recharge Potential Assessment using multi-criteria decision-making approach.",
+    authors: "Prafull Singh, Pradipika Verma, Shahnawaz S, Shailesh Kumar Singh",
+    journal: "CURRENT SCIENCE",
+    date: "2024",
+    doi: "https://doi.org/10.18520/cs/v126/i7/827-836",
+    image: "images/paper8.png"},
+  {title: "Urban Heat Island estimation using LULC, NDVI and NDBI: A case Study of Bhopal City, India.",
+    authors: "Prafull Singh, Pradipika Verma , A. S Chaudhuri, Vivek Singh and P. K. Rai ",
+    journal: "International Journal of Environmental Science and Technology",
+    date: "2024",
+    doi: "https://doi.org/10.1007/s13762-023-05141-y",
+    image: "images/paper9.png"},
+  {title: "Landslide Susceptibility Prediction using Frequency Ratio Model: A Case Study of Uttarakhand, Himalaya (India).",
+    authors: "Prafull Singh, Ujjwal Sur, P. K. Rai and S.K Singh",
+    journal: "Proceedings of the Indian National Science Academy",
+    date: "2023",
+    doi: "https://doi.org/10.1007/s43538-023-00171-z",
+    image: "images/paper10.png"},
+  {title: "A holistic review on trend, occurrence, factors affecting pesticide concentration, and ecological risk assessment.",
+    authors: "Singh, R.P., Mahajan, M., Gandhi, K. Prafull Singh ",
+    journal: "Environmental Monitoring and Assessment",
+    date: "2023",
+    doi: "https://doi.org/10.1007/s10661-023-11005-2",
+    image: "images/paper11.png"},
+  {title: "Spatio-temporal dynamics of land use/cover and land surface temperature in Prayagraj city, India.",
+    authors: "Srivastava A, Shukla S, Singh Prafull, Jha PK. ",
+    journal: "Indoor and Built Environment",
+    date: "2023",
+    doi: "https://doi.org/10.1177/1420326X231159633",
+    image: "images/paper12.png"}
+  {title: "Earth Observation data sets in Monitoring of Urbanization and Urban Heat Island of Delhi, India.",
+    authors: "Prafull Singh, A. S Chaudhuri, Pradipika Verma and Vivek Singh ",
+    journal: "Geomatics, Natural Hazards and Risk",
+    date: "2022",
+    doi: "https://doi.org/10.1080/19475705.2022.2097452",
+    image: "images/paper13.png"},
+  {title: "Predicting Landslides Susceptible Zones in the Lesser Himalayas by Ensemble of Per Pixel and Object-Based Models.",
+    authors: "Sur, U., Prafull Singh* Meena, S.R.; Singh, T.N. ",
+    journal: "Remote Sensing",
+    date: "2022",
+    doi: "https://doi.org/10.3390/rs14081953",
+    image: "images/paper14.png"},
+  {title: "Decadal trend analysis of rainfall patterns of past 115 years & its impact on Sikkim, India",
+    authors: "Aman Kakkar, P. K. Rai, V. N. Mishra, Prafull Singh ",
+    journal: "Remote Sensing Applications: Society and Environment ",
+    date: "2022",
+    doi: "https://doi.org/10.1016/j.rsase.2022.100738.",
+    image: "images/paper15.png"},
+  {title: "A machine learning-based classification of LANDSAT images to map land use and land cover of India",
+    authors: "R.K.Singh, Prafull Singh, Martin Drews ",
+    journal: "Remote Sensing Applications: Society and Environment.",
+    date: "2021",
+    doi: "https://doi.org/10.1016/j.rsase.2021.100624",
+    image: "images/paper16.png"},
+  {title: "Computation of Groundwater Recharge prospect in urban environment for sustainable water security",
+    authors: "Anindita Sarkar Chaudhuri, Prafull Singh*, Pradipika verma, S. C. Rai ",
+    journal: "Arabian Journal of Geoscience",
+    date: "2021",
+    doi: "https://doi.org/10.1007/s12517-021-06904-y",
+    image: "images/paper17.png"},
+  {title: "Landslide probability mapping by considering fuzzy numerical risk factor (FNRF) and landscape change for road corridor of Uttarakhand, India.",
+    authors: "Ujjwal Sur and Prafull Singh*",
+    journal: "Environment, Development and Sustainability",
+    date: "2021",
+    doi: "https://doi.org/10.1007/s10668-021-01226-1",
+    image: "images/paper18.png"}
+  {title: "Landslide Susceptibility Assessment in a Lesser Himalayan Road Corridor (India) applying Fuzzy AHP technique and Earth-Observation data.",
+    authors: "Ujjwal Sur and Prafull Singh*, Sansar Raj Meena ",
+    journal: "Geomatics, Natural Hazards and Risk",
+    date: "2020",
+    doi: "https://doi.org/10.1080/19475705.2020.1836038",
+    image: "images/paper19.png"},
+  {title: "Comparative landslide susceptibility assessment using statistical information value and index of entropy model in Bhanupali-Beri region, Himachal Pradesh, India.",
+    authors: "Prafull Singh*, Ankit Sharma, Ujjwal Sur, P.K.Rai",
+    journal: "Environment, Development and Sustainability",
+    date: "2020",
+    doi: "https://doi.org/10.1007/s10668-020-00811-0",
+    image: "images/paper20.png"},
+  {title: "Assessment of landscape change of lesser Himalayan Road corridor of Uttarakhand, India.",
+    authors: "Ujjwal Sur and Prafull Singh*",
+    journal: "Journal of Landscape Ecology",
+    date: "2020",
+    doi: "https://doi.org/10.2478/jlecol-2020-0014",
+    image: "images/paper21.png"},
+];
+
+function renderPublications() {
+  const grid = document.getElementById("publicationsGrid");
+  const tableBody = document.getElementById("archiveTableBody");
+  if (!grid || !tableBody) return;
+
+  grid.innerHTML = "";
+  tableBody.innerHTML = "";
+
+  // 1. Take exactly the top 5 papers and render them as cards
+  const topFive = allPublications.slice(0, 5);
+  topFive.forEach(paper => {
+    const card = document.createElement("article");
+    card.className = "pub-card";
+    card.innerHTML = `
+      <div class="pub-cover-wrap">
+        <img src="${paper.image}" alt="${paper.title}" class="pub-cover">
+      </div>
+      <div class="pub-body">
+        <div class="pub-meta">
+          <span>Article</span> • <span class="pub-date">${paper.date}</span>
+        </div>
+        <h3 class="pub-title">
+          <a href="${paper.doi}" target="_blank" rel="noopener noreferrer">${paper.title}</a>
+        </h3>
+        <p class="pub-authors"><strong>Authors:</strong> ${paper.authors}</p>
+        <div class="pub-actions">
+          <span class="pub-journal-tag">${paper.journal}</span>
+          <a href="${paper.doi}" target="_blank" rel="noopener noreferrer" class="pub-link-btn">View Article ↗</a>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // 2. Render the 6th slot as the "View More" card
+  const remainingCount = allPublications.length - 5;
+  const viewMoreCard = document.createElement("div");
+  viewMoreCard.className = "view-more-card";
+  viewMoreCard.onclick = togglePublicationTable;
+  viewMoreCard.innerHTML = `
+    <div class="vm-icon">📚</div>
+    <h3>All Publications</h3>
+    <p>${remainingCount > 0 ? `+${remainingCount} more published articles` : 'View full repository table'}</p>
+    <button class="view-more-btn" type="button">
+      <span>View All in Table</span> <span>▼</span>
+    </button>
+  `;
+  grid.appendChild(viewMoreCard);
+
+  // 3. Render all papers in the archive table
+  allPublications.forEach((paper, idx) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td style="white-space: nowrap;">${paper.date}</td>
+      <td class="t-title">${paper.title}</td>
+      <td>${paper.authors}</td>
+      <td class="t-journal">${paper.journal}</td>
+      <td><a href="${paper.doi}" target="_blank" rel="noopener noreferrer" class="t-link">View ↗</a></td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
+
+function togglePublicationTable() {
+  const container = document.getElementById("archiveTableContainer");
+  if (!container) return;
+  const isOpen = container.classList.toggle("open");
+  if (isOpen) {
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+// Run when the page finishes loading
+document.addEventListener("DOMContentLoaded", renderPublications);
 </script>
